@@ -29,7 +29,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			img {
 				max-width: 100%;
 			}
-
 		</style>
 	</head>
 
@@ -37,29 +36,35 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Navbar />
 		<main>
 			<div class="container py-5">
-				
-
 				<div class="row g-5 py-3">
 					<div class="col-md-8">
 						<article class="blog-post">
 							{
 								heroImage && (
-									<div class="card">
-										<img height={360} src={heroImage} alt="" />
-									</div>
+									<img
+										src={heroImage}
+										alt=""
+										style="width: 100%; border-radius: 5px; border: 1px solid #9a9a9a;"
+									/>
 								)
 							}
 
 							<h2 class="title">{title}</h2>
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on{" "}
-										<FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
+							<ul>
+								<li>By: Kion</li>
+								<li>
+									Published: <FormattedDate date={pubDate} />
+								</li>
+
+								{
+									updatedDate && (
+										<li>
+											Last updated:{" "}
+											<FormattedDate date={updatedDate} />
+										</li>
+									)
+								}
+							</ul>
 							<hr />
 							<slot />
 						</article>
@@ -78,7 +83,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 					<div class="col-md-4">
 						<div>
-						
 							<div>
 								<h4 class="fst-italic">Recent posts</h4>
 								<ul class="list-unstyled">

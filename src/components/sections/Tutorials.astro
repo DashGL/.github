@@ -1,3 +1,7 @@
+---
+const { BASE_URL } = import.meta.env;
+---
+
 <section class="border-bottom">
     <div class="container px-4 py-5" id="custom-cards">
         <h2 class="pb-2 border-bottom">Latest Tutorials</h2>
@@ -5,45 +9,68 @@
         <!-- Tutorial 1 -->
         <div class="row featurette mb-5">
             <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1">
-                    First featurette heading. <span class="text-body-secondary"
-                        >It’ll blow your mind.</span
-                    >
-                </h2>
+                <h2 class="featurette-heading fw-normal lh-1">Brickout</h2>
                 <p class="lead">
-                    Some great placeholder content for the first featurette
-                    here. Imagine some exciting prose here.
+                    This tutorial covers how to make a Brickout Clone using the
+                    GTK+ library for a window context. OpenGL for rendering, and
+                    DashGL to manage matrix manipulation. We'll start off with
+                    something very simple, a very primitive clone of Brickout
+                    that doesn't use any sprites. We'll learn how to declare
+                    vertices and uniforms to draw basic objects on the screen
+                    and declare keydown callbacks to move entities on the
+                    screen.
                 </p>
             </div>
             <div class="col-md-5">
-                <img src="https://placehold.co/600x400" />
+                <img src=`${ BASE_URL}img/tutorial-1.jpg` />
             </div>
         </div>
 
         <!-- Tutorial 2 -->
-        <div class="row featurette">
+        <div class="row featurette mb-5">
             <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading fw-normal lh-1">
-                    Oh yeah, it’s that good. <span class="text-body-secondary"
-                        >See for yourself.</span>
-                </h2>
+                <h2 class="featurette-heading fw-normal lh-1">Astroids</h2>
                 <p class="lead">
-                    Another featurette? Of course. More placeholder content here
-                    to give you an idea of how this layout would work with some
-                    actual real-world content in place.
+                    Simple Astroids clone using assets from Kenney's Space
+                    Shooter Redux and Space Shooter Extension. The pace of this
+                    tutorial will be slightly faster than previous tutorials. As
+                    concepts that were introduced one at a time before will now
+                    be grouped into a single step. This tutorial will not be
+                    drastically different from the Invaders tutorial. We will
+                    mainly focus on movement, direction and acceleration. And
+                    how to draw the same sprite multiple times to create a
+                    wrapping effect.
                 </p>
             </div>
             <div class="col-md-5 order-md-1">
-                <img src="https://placehold.co/600x400" />
+                <img src=`${ BASE_URL}img/tutorial-2.jpg` />
+            </div>
+        </div>
+
+        <!-- Tutorial 3 -->
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1">Invaders</h2>
+                <p class="lead">
+                    Simple Invaders clone using Kenney's Space Shooter redux
+                    pack. In this tutorial we will include sprites to make a
+                    more complete looking game, but it will still be fairly
+                    simple in nature. We have a group of enemies that fire at
+                    the player while moving down the screen and a player that
+                    can fire back. We use static arrays to create a very simple
+                    bullet management system. And use the pythagorean theorem
+                    for basic hit detection.
+                </p>
+            </div>
+            <div class="col-md-5">
+                <img src=`${ BASE_URL}img/tutorial-3.jpg` />
             </div>
         </div>
     </div>
 </section>
 
 <style>
-
     img {
         max-width: 100%;
     }
-
 </style>

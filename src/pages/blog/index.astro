@@ -7,8 +7,9 @@ import { getCollection } from "astro:content";
 import BlogCard from "../../components/elements/BlogCard.astro";
 
 const posts = (await getCollection("blog")).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+const { BASE_URL } = import.meta.env
 ---
 
 <!DOCTYPE html>
@@ -66,11 +67,12 @@ const posts = (await getCollection("blog")).sort(
 						>
 							{
 								posts.map((post) => (
-									<a href={`/blog/${post.slug}/`}>
+									<a href={`${BASE_URL}blog/${post.slug}/`}>
 										<BlogCard
 											title={post.data.title}
 											description={post.data.description}
 											date={post.data.pubDate}
+											image={post.data.heroImage}
 										/>
 									</a>
 								))
