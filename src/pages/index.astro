@@ -1,0 +1,32 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/sections/Hero.astro';
+import Tutorials from '../components/sections/Tutorials.astro';
+import Blog from '../components/sections/Blog.astro';
+import Assets from '../components/sections/Assets.astro';
+import Format from '../components/sections/Format.astro';
+import Footer from '../components/Footer.astro';
+
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		
+		<Navbar/>
+		<Hero/>
+		<Tutorials/>
+		<Blog/>
+		<Assets/>
+		<Format/>
+		<Footer />
+
+	</body>
+</html>

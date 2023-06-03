@@ -1,0 +1,34 @@
+---
+import FormattedDate from "../FormattedDate.astro";
+
+export interface Props {
+    title: string;
+    description: string;
+    date: Date;
+    image?: string;
+}
+
+const {
+    title,
+    description,
+    date,
+    image = "https://placehold.co/600x400",
+} = Astro.props;
+---
+
+<div class="col">
+    <div class="card shadow-sm">
+        <img src={image} />
+        <div class="card-body">
+            <h5 class="card-title">{title}</h5>
+            <FormattedDate date={date} />
+
+            <p class="card-text">
+                {description}
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+                <small class="text-body-secondary">9 mins</small>
+            </div>
+        </div>
+    </div>
+</div>
