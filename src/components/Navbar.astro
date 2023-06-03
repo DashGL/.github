@@ -1,4 +1,5 @@
 ---
+const { BASE_URL } = import.meta.env
 ---
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
@@ -19,25 +20,25 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/tutorial"
+                    <a class="nav-link active" aria-current="page" href=`${ BASE_URL }/tutorial`
                         >Tutorials</a
                     >
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/blog"
+                    <a class="nav-link active" aria-current="page" href=`${ BASE_URL }/blog`
                         >Blog</a
                     >
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/tool"
+                    <a class="nav-link active" aria-current="page" href=`${ BASE_URL }/tools`
                         >Tools</a
                     >
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/format"
+                    <a class="nav-link active" aria-current="page" href=`${ BASE_URL }/format`
                         >Formats</a
                     >
                 </li>
