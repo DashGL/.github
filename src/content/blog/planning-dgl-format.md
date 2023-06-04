@@ -1,6 +1,6 @@
 ---
 title: "Planning out the next Dash Model Format"
-description: "Trying to consolidate SoC devices using the Gekkworm x830 case and mass storage"
+description: "Trying to consolidate SoC devices using the Geekworm x830 case and mass storage"
 pubDate: "September 29, 2018"
 heroImage: "https://cdn2.sculpteo.com/blog/wp-content/uploads/2018/10/Blog-headline-2-11.jpg"
 author: Kion
