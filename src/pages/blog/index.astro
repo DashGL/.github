@@ -9,30 +9,13 @@ import BlogCard from "../../components/elements/BlogCard.astro";
 const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-const { BASE_URL } = import.meta.env
+const { BASE_URL } = import.meta.env;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			ul {
-				list-style-type: none;
-				padding: unset;
-			}
-			ul li {
-				display: flex;
-			}
-			ul li :global(time) {
-				flex: 0 0 130px;
-				font-style: italic;
-				color: #595959;
-			}
-			ul li a:visited {
-				color: #8e32dc;
-			}
-		</style>
 	</head>
 	<body>
 		<Navbar />
@@ -82,7 +65,7 @@ const { BASE_URL } = import.meta.env
 				</div>
 			</section>
 		</main>
-		
+
 		<Footer />
 	</body>
 </html>
