@@ -2,7 +2,7 @@
 title: "Piboy Pocket"
 description: "Sketch of my concept of a Piboy Pocket back and white open source handheld"
 pubDate: "October 2, 2018"
-heroImage: "/img/th-4015604522.jpeg"
+heroImage: "/img/piboy_pocket.jpg"
 author: Kion
 ---
 
