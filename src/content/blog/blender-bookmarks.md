@@ -29,3 +29,18 @@ NJF: [https://pastebin.com/4VUt8buT](https://pastebin.com/4VUt8buT)
 ![](/img/xentax_wiki.png)
 
 Xentax Import: http://wiki.xentax.com/index.php/Blender_Import_Guide#Bones.2C_weights
+
+### More random Bookamrks
+
+- Unity Script import: [https://docs.unity3d.com/Manual/ScriptedImporters.html](https://docs.unity3d.com/Manual/ScriptedImporters.html)  
+- Blender extras API: [https://docs.blender.org/api/blender\_python\_api\_2\_66a\_release/bpy\_extras.io\_utils.html](https://docs.blender.org/api/blender_python_api_2_66a_release/bpy_extras.io_utils.html)  
+- VBO and VAO Explanation: [https://www.reddit.com/r/opengl/comments/bqts68/i\_want\_learn\_about\_vbos\_and\_vaos/eo7yo4n/](https://www.reddit.com/r/opengl/comments/bqts68/i_want_learn_about_vbos_and_vaos/eo7yo4n/)  
+- C Framework for Imports/Exports in Blender: [https://summerofcode.withgoogle.com/projects/#5611439425847296](https://summerofcode.withgoogle.com/projects/#5611439425847296)
+
+### PyGamer
+
+I definitely need this:
+
+> Pygamer coming soon! MakeCode Arcade games run on it just as easily as they do on Pybadge. Sparky Invaders from [@johnedgarpark](https://twitter.com/johnedgarpark?ref_src=twsrc%5Etfw) Learn Guide out soon. [#retrogaming](https://twitter.com/hashtag/retrogaming?src=hash&ref_src=twsrc%5Etfw) [@msmakecode](https://twitter.com/MSMakeCode?ref_src=twsrc%5Etfw) [pic.twitter.com/UVZKFI5c7h](https://t.co/UVZKFI5c7h)
+> 
+> — adafruit industries (@adafruit) [May 16, 2019](https://twitter.com/adafruit/status/1129131302324703244?ref_src=twsrc%5Etfw)
