@@ -2,7 +2,7 @@
 title: "Getting Reorganized"
 description: "Trying to consolidate SoC devices using the Gekkworm x830 case and mass storage"
 pubDate: "September 25, 2018"
-heroImage: "https://img.dxcdn.com/productimages/sku_569673_5.jpg"
+heroImage: "/img/maxresdefault-1053927669.jpeg"
 author: Kion
 ---
  
