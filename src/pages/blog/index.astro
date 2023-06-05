@@ -19,7 +19,8 @@ const posts = (await getCollection("blog")).sort(
 	<body>
 		<Navbar />
 		<main>
-			<section class="py-5 text-center container">
+			<section style="background-color:rgb(222, 255, 245)">
+				<div class="py-5 text-center container">
 				<div class="row py-lg-5">
 					<div class="col-lg-6 col-md-8 mx-auto">
 						<h1 class="fw-light">Blog Posts</h1>
@@ -38,6 +39,7 @@ const posts = (await getCollection("blog")).sort(
 						</p>
 					</div>
 				</div>
+			</div>
 			</section>
 
 			<section>
