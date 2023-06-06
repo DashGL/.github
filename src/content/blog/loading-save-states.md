@@ -2,7 +2,7 @@
 title: "Load Save State issue"
 description: "Troubleshooting Save State Issues in PCSX-Reloaded"
 pubDate: "May 6, 2020"
-heroImage: "/img/PCSX-Reloaded-captura-de-tela-4-baixesoft-9398709.png"
+heroImage: "/img/hacking-save-state-fig1-3722335346.png"
 author: Kion
 ---
 
