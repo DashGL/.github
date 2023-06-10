@@ -4,6 +4,8 @@ import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
+
+import Banner from "../../components/elements/Banner.astro";
 import BlogCard from "../../components/elements/BlogCard.astro";
 
 const posts = (await getCollection("blog")).sort(
@@ -19,29 +21,12 @@ const posts = (await getCollection("blog")).sort(
 	<body>
 		<Navbar />
 		<main>
-			<section style="background-color:rgb(222, 255, 245)">
-				<div class="py-5 text-center container">
-				<div class="row py-lg-5">
-					<div class="col-lg-6 col-md-8 mx-auto">
-						<h1 class="fw-light">Blog Posts</h1>
-						<p class="lead text-body-secondary">
-							Blog posts are a stream of consciousness, where I'm taking notes on something
-							as I'm working through it. Or making random notes about something on my mind.
-							There's not much here other than the rantings of a mad man.
-						</p>
-						<p>
-							<a href="#" class="btn btn-primary my-2"
-								>Cool story bruh</a
-							>
-							<a href="#" class="btn btn-secondary my-2"
-								>What?</a
-							>
-						</p>
-					</div>
-				</div>
-			</div>
-			</section>
-
+			<Banner
+				title="Blog Posts"
+				description="Blog posts are a stream of consciousness, where I'm taking notes on something as I'm working through it. Or making random notes about something on my mind."
+				color="rgb(222, 255, 245)"
+			/>
+	
 			<section>
 				<div class="album py-5 bg-body-tertiary">
 					<div class="container">
