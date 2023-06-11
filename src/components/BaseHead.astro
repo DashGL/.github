@@ -22,22 +22,14 @@ const {
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" href="/logo.png" />
 <meta name="generator" content={Astro.generator} />
-
-<link
-	rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-	crossorigin="anonymous"
-	referrerpolicy="no-referrer"
-/>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
+<title>DashGL | {title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
@@ -55,6 +47,16 @@ const {
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+<!-- Import Font Awesome -->
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"
+/>
+
+<!-- Import Bootstrap (optional) -->
 {
 	css === "bootstrap" && (
 		<link
@@ -66,6 +68,7 @@ const {
 	)
 }
 
+<!-- Import Material Bootstrap (optional) -->
 {
 	css === "material=bootstrap" && (
 		<>
@@ -85,4 +88,5 @@ const {
 	)
 }
 
+<!-- Import Tailwind (optional) -->
 {css === "tailwind" && <script src="https://cdn.tailwindcss.com" />}
