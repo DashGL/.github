@@ -1,72 +1,43 @@
-<section class="border-bottom">
-    <div class="container px-4 py-5" id="custom-cards">
-        <h2 class="pb-2 border-bottom">Latest Tutorials</h2>
+---
+import TutorialCard from "./TutorialCard.astro";
+---
 
-        <!-- Tutorial 1 -->
-        <div class="row featurette mb-5">
-            <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1">Brickout</h2>
-                <p class="lead">
-                    This tutorial covers how to make a Brickout Clone using the
-                    GTK+ library for a window context. OpenGL for rendering, and
-                    DashGL to manage matrix manipulation. We'll start off with
-                    something very simple, a very primitive clone of Brickout
-                    that doesn't use any sprites. We'll learn how to declare
-                    vertices and uniforms to draw basic objects on the screen
-                    and declare keydown callbacks to move entities on the
-                    screen.
-                </p>
-            </div>
-            <div class="col-md-5">
-                <img src=`/img/tutorial-1.jpg` />
-            </div>
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+            <h2
+                class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
+            >
+                Latest Tutorials
+            </h2>
+            <p
+                class="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400"
+            >
+                Read through of our tutorials making it easy to get started with
+                graphical programming on Linux.
+            </p>
         </div>
-
-        <!-- Tutorial 2 -->
-        <div class="row featurette mb-5">
-            <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading fw-normal lh-1">Astroids</h2>
-                <p class="lead">
-                    Simple Astroids clone using assets from Kenney's Space
-                    Shooter Redux and Space Shooter Extension. The pace of this
-                    tutorial will be slightly faster than previous tutorials. As
-                    concepts that were introduced one at a time before will now
-                    be grouped into a single step. This tutorial will not be
-                    drastically different from the Invaders tutorial. We will
-                    mainly focus on movement, direction and acceleration. And
-                    how to draw the same sprite multiple times to create a
-                    wrapping effect.
-                </p>
-            </div>
-            <div class="col-md-5 order-md-1">
-                <img src=`/img/tutorial-2.jpg` />
-            </div>
-        </div>
-
-        <!-- Tutorial 3 -->
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1">Invaders</h2>
-                <p class="lead">
-                    Simple Invaders clone using Kenney's Space Shooter redux
-                    pack. In this tutorial we will include sprites to make a
-                    more complete looking game, but it will still be fairly
-                    simple in nature. We have a group of enemies that fire at
-                    the player while moving down the screen and a player that
-                    can fire back. We use static arrays to create a very simple
-                    bullet management system. And use the pythagorean theorem
-                    for basic hit detection.
-                </p>
-            </div>
-            <div class="col-md-5">
-                <img src=`/img/tutorial-3.jpg` />
-            </div>
+        <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+            <TutorialCard
+                title="Brickout"
+                description="Simple Brickout clone that only uses basic geometry to get started."
+                image="/img/tutorial-1.jpg"
+            />
+            <TutorialCard
+                image="/img/tutorial-2.jpg"
+                title="Astroids"
+                description="Astroids as a method to introduce sprites and gameover screen."
+            />
+            <TutorialCard
+                image="/img/tutorial-3.jpg"
+                title="Invaders"
+                description="Invaders clone which introduce simple behavior and explosion"
+            />
+            <TutorialCard
+                image="/img/tutorial-1.jpg"
+                title="Simple Model"
+                description="Start with a simple triangle end with a rendered model"
+            />
         </div>
     </div>
 </section>
-
-<style>
-    img {
-        max-width: 100%;
-    }
-</style>

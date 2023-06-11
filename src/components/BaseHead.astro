@@ -1,8 +1,4 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
-import "../styles/global.css";
-
 export interface Props {
 	title: string;
 	description: string;
@@ -10,13 +6,14 @@ export interface Props {
 	css?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const {
 	title,
 	description,
 	image = "/placeholder-social.jpg",
-	css = "bootstrap",
+	css = "none",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!-- Global Metadata -->
@@ -67,26 +64,3 @@ const {
 		/>
 	)
 }
-
-<!-- Import Material Bootstrap (optional) -->
-{
-	css === "material=bootstrap" && (
-		<>
-			<link
-				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-				rel="stylesheet"
-			/>
-			<link
-				href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-				rel="stylesheet"
-			/>
-			<link
-				href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css"
-				rel="stylesheet"
-			/>
-		</>
-	)
-}
-
-<!-- Import Tailwind (optional) -->
-{css === "tailwind" && <script src="https://cdn.tailwindcss.com" />}
