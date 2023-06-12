@@ -1,11 +1,12 @@
 ---
-import FormattedDate from "../FormattedDate.astro";
+import FormattedDate from "./FormattedDate.astro";
 
 export interface Props {
     title: string;
     description: string;
     date: Date;
     image?: string;
+    url: string;
 }
 
 const {
@@ -13,13 +14,14 @@ const {
     description,
     date,
     image = "https://placehold.co/600x400",
+    url,
 } = Astro.props;
 ---
 
 <article
     class="p-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
 >
-    <a href="#">
+    <a href={url}>
         <img class="mb-5 rounded-lg" src={image} alt="" />
     </a>
     <span
