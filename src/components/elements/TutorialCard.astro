@@ -1,46 +1,38 @@
 ---
 export interface Props {
-    title: string;
-    description: string;
-    image?: string;
+	title?: string;
+	description?: string;
+	image?: string;
 }
 
 const {
-    title,
-    description,
-    image = "https://placehold.co/600x400",
+	title = "Title",
+	description = "",
+	image = "/placeholder-social.jpg",
 } = Astro.props;
 ---
-<!-- Post -->
-<div class="row">
-    <div class="col-md-4 mb-4">
-        <div
-            class="bg-image hover-overlay shadow-1-strong rounded ripple"
-            data-mdb-ripple-color="light"
-        >
-            <img
-                src={ image }
-                class="img-fluid"
-            />
-            <a href="#!">
-                <div
-                    class="mask"
-                    style="background-color: rgba(251, 251, 251, 0.15);"
-                >
-                </div>
-            </a>
-        </div>
-    </div>
 
-    <div class="col-md-8 mb-4">
-        <h5>{ title } </h5>
-        <p>
-            { description } 
+<div
+    class="items-center bg-gray-50 rounded-lg shadow flex dark:bg-gray-800 dark:border-gray-700"
+>
+    <a class="flex-1" href="/tutorials/">
+        <img
+            class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+            src={ image }
+            alt={ title }
+        />
+    </a>
+    <div class="p-5 flex-1">
+        <h3
+            class="text-xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+            <a href="#">{ title } </a>
+        </h3>
+        <span class="text-gray-500 dark:text-gray-400">GTK w/ OpenGL 3.0</span>
+        <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+            { description }
         </p>
 
-        <button
-            type="button"
-            class="btn btn-primary">Read</button
-        >
+        
     </div>
 </div>
