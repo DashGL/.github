@@ -18,7 +18,7 @@ const blog = defineCollection({
 	}),
 });
 
-const gtk = defineCollection({
+const tutorials = defineCollection({
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
@@ -36,4 +36,4 @@ const gtk = defineCollection({
 	}),
 });
 
-export const collections = { blog, gtk };
+export const collections = { blog, tutorials };

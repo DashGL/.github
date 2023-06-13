@@ -3,7 +3,7 @@ import { CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../layouts/GtkPost.astro';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('gtk')
+	const posts = await getCollection('tutorials')
 	return posts.map((post) => ({
 		params: { slug: post.slug },
 		props: post,
