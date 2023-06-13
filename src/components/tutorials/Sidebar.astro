@@ -1,0 +1,19 @@
+---
+import Step from "./Step.astro";
+const { pathname } = Astro.url;
+---
+
+<aside class="hidden xl:block" aria-labelledby="sidebar-label">
+    <div class="xl:w-[336px]">
+        <div
+            class="p-4 mb-6 rounded-lg border border-gray-200 dark:border-gray-700"
+        >
+            <h4
+                class="text-center mb-4 text-sm font-bold text-gray-900 dark:text-white uppercase"
+            >
+                Table of Contents 
+            </h4>
+            <Step/>
+        </div>
+    </div>
+</aside>

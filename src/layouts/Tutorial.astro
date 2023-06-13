@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Sidebar from "../components/tutorials/Sidebar.astro"
+import SocialShare from "../components/tutorials/SocialShare.astro";
+
+type Props = CollectionEntry<"tutorials">["data"];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Navbar />
+
+		<main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900">
+
+			<header class="py-12">
+				<div class="px-4 mx-auto w-full max-w-screen-xl text-center">
+					<span
+						class="block mb-4 font-semibold text-gray-900 dark:text-white"
+						>Published <time
+							class="font-normal text-gray-500 dark:text-gray-400"
+							class="uppercase"
+							datetime="2022-03-08"
+							title="August 3rd, 2022"
+							>{pubDate}</time
+						></span
+					>
+					<h1
+						class="mx-auto mb-4 max-w-2xl text-2xl dark:text-white font-extrabold leading-none text-gray-900 sm:text-3xl lg:text-4xl"
+					>
+						{ title }
+					</h1>
+					<p
+						class="text-lg font-normal text-gray-500 dark:text-gray-400"
+					>
+						Before going digital, you might scribbling down some
+						ideas in a sketchbook.
+					</p>
+				</div>
+			</header>
+
+			<div
+				class="flex relative z-20 justify-between px-4 mx-auto max-w-screen-xl bg-white dark:bg-gray-900 rounded"
+			>
+				<article
+					class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
+				>
+					
+					
+					<img
+						src={heroImage}
+						alt=""
+						style="width: 100%; border-radius: 5px;"
+					/>
+					
+					<slot class="format"/>
+					<SocialShare/>
+
+				</article>
+				<Sidebar/>
+				
+			</div>
+			
+		</main>
+
+		<Footer />
+	</body>
+</html>
