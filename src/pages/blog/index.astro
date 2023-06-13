@@ -3,11 +3,11 @@ import BaseHead from "../../components/BaseHead.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_DESCRIPTION } from "../../consts";
-import { getCollection } from "astro:content";
 
 import Banner from "../../components/elements/Banner.astro";
 import BlogCard from "../../components/elements/BlogCard.astro";
 
+import { getCollection } from "astro:content";
 const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
