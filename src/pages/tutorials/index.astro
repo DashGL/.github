@@ -5,7 +5,6 @@ import Footer from "../../components/Footer.astro";
 
 import Banner from "../../components/elements/Banner.astro";
 import TutorialCard from "../../components/elements/TutorialCard.astro";
-
 ---
 
 <!DOCTYPE html>
@@ -17,98 +16,201 @@ import TutorialCard from "../../components/elements/TutorialCard.astro";
     <body>
         <Navbar />
         <main>
- 
-            <Banner
-                title="Tutorials"
-                description="Tutorials are a step by step explanation of starting from nothing and building up to a working example."
-                color="rgb(255, 212, 239)"
-            />
-
-            <section class="my-5">
-                <div class="container">
-                    <!--Grid row-->
-                    <div class="row">
-                        <!--Grid column-->
-                        <div class="col-md-9 mb-4">
-                            <!--Section: Content-->
-                            <section>
-                                <TutorialCard
-                                    title="Brickout"
-                                    description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
-                                    image="/img/tutorial-1.jpg"
-                                />
-                                <TutorialCard
-                                    title="Astroids"
-                                    description="Simple Astroids clone using assets from Kenney's Space Shooter Redux and Space Shooter Extension. The pace of this tutorial will be slightly faster than previous tutorials. As concepts that were introduced one at a time before will now be grouped into a single step. This tutorial will not be drastically different from the Invaders tutorial. We will mainly focus on movement, direction and acceleration. And how to draw the same sprite multiple times to create a wrapping effect. "
-                                    image="/img/tutorial-2.jpg"
-                                />
-                                <TutorialCard
-                                    title="Invaders"
-                                    description="Simple Invaders clone using Kenney's Space Shooter redux pack. In this tutorial we will include sprites to make a more complete looking game, but it will still be fairly simple in nature. We have a group of enemies that fire at the player while moving down the screen and a player that can fire back. We use static arrays to create a very simple bullet management system. And use the pythagorean theorem for basic hit detection. "
-                                    image="/img/tutorial-3.jpg"
-                                />
-                            </section>
-                            <!--Section: Content-->
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-md-3 mb-4">
-                            <!--Section: Sidebar-->
-                            <section>
-                                <!--Section: Ad-->
-                                <section>
-                                    <h5>Graphics Tutorials for Linux</h5>
-
-                                    <ul>
-                                        <li>OpenGL 2.0ES</li>
-                                        <li>OpenGL 3.0</li>
-                                    </ul>
-                                    <ul>
-                                        <li>SDL</li>
-                                        <li>EGL</li>
-                                        <li>GTK</li>
-                                    </ul>
-                                </section>
-                                <!--Section: Ad-->
-                            </section>
-                            <!--Section: Sidebar-->
-                        </div>
-                        <!--Grid column-->
+            <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900">
+                <header
+                    class="bg-[url('/banner.png')] w-full h-[460px] xl:h-[537px] bg-no-repeat bg-cover bg-center bg-blend-darken relative"
+                >
+                    <div
+                        class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"
+                    >
                     </div>
-                    <!--Grid row-->
-
-                    <!-- Pagination -->
-                    <nav class="my-4" aria-label="...">
-                        <ul
-                            class="pagination pagination-circle justify-content-center"
+                    <div
+                        class="absolute top-20 left-1/2 px-4 mx-auto w-full max-w-screen-xl -translate-x-1/2 xl:top-1/2 xl:-translate-y-1/2 xl:px-0"
+                    >
+                        
+                        <h1
+                            class="mb-4 max-w-4xl text-2xl font-extrabold leading-none text-white sm:text-3xl lg:text-4xl"
                         >
-                            <li class="page-item">
+                            Tutorials
+                        </h1>
+                        <p class="text-lg font-normal text-gray-300">
+                            Tutorials for getting started with programming on Linux.
+                        </p>
+                    </div>
+                </header>
+                <div
+                    class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-white dark:bg-gray-800 rounded xl:-m-32 xl:p-9 xl:mx-auto"
+                >
+                    <article
+                        class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
+                    >
+                        <TutorialCard
+                            title="Brickout"
+                            description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
+                            image="/img/tutorial-1.jpg"
+                        />
+                        <TutorialCard
+                            title="Astroids"
+                            description="Simple Astroids clone using assets from Kenney's Space Shooter Redux and Space Shooter Extension. The pace of this tutorial will be slightly faster than previous tutorials. As concepts that were introduced one at a time before will now be grouped into a single step. This tutorial will not be drastically different from the Invaders tutorial. We will mainly focus on movement, direction and acceleration. And how to draw the same sprite multiple times to create a wrapping effect. "
+                            image="/img/tutorial-2.jpg"
+                        />
+                        <TutorialCard
+                            title="Invaders"
+                            description="Simple Invaders clone using Kenney's Space Shooter redux pack. In this tutorial we will include sprites to make a more complete looking game, but it will still be fairly simple in nature. We have a group of enemies that fire at the player while moving down the screen and a player that can fire back. We use static arrays to create a very simple bullet management system. And use the pythagorean theorem for basic hit detection. "
+                            image="/img/tutorial-3.jpg"
+                        />
+                    </article>
+                    <aside
+                        class="hidden xl:block"
+                        aria-labelledby="sidebar-label"
+                    >
+                        <div class="xl:w-[336px]">
+                            <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
+                            <div class="mb-8">
+                                <h4
+                                    class="mb-2 text-sm font-bold text-gray-900 dark:text-white uppercase"
+                                >
+                                    Flowbite News morning headlines
+                                </h4>
+                                <p
+                                    class="mb-4 text-sm font-light text-gray-500 dark:text-gray-400"
+                                >
+                                    Get all the stories you need-to-know from
+                                    the most powerful name in news delivered
+                                    first thing every morning to your inbox
+                                </p>
+                                <button
+                                    type="button"
+                                    data-modal-toggle="newsletter-modal"
+                                    class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 text-center w-full"
+                                    >Subscribe</button
+                                >
+                            </div>
+                            <div class="mb-12">
+                                <h4
+                                    class="mb-4 text-sm font-bold text-gray-900 dark:text-white uppercase"
+                                >
+                                    Latest news
+                                </h4>
+                                <div class="mb-6 flex items-center">
+                                    <a href="#" class="shrink-0">
+                                        <img
+                                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-1.png"
+                                            class="mr-4 max-w-full w-24 h-24 rounded-lg"
+                                            alt="Image 1"
+                                        />
+                                    </a>
+                                    <div>
+                                        <h5
+                                            class="mb-2 text-lg font-bold leading-tight dark:text-white text-gray-900"
+                                        >
+                                            Our first office
+                                        </h5>
+                                        <p
+                                            class="mb-2 font-light text-gray-500 dark:text-gray-400"
+                                        >
+                                            Over the past year, Volosoft has
+                                            undergone changes.
+                                        </p>
+                                        <a
+                                            href="#"
+                                            class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                                        >
+                                            Read in 9 minutes
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="mb-6 flex items-center">
+                                    <a href="#" class="shrink-0">
+                                        <img
+                                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-2.png"
+                                            class="mr-4 max-w-full w-24 h-24 rounded-lg"
+                                            alt="Image 2"
+                                        />
+                                    </a>
+                                    <div>
+                                        <h5
+                                            class="mb-2 text-lg font-bold leading-tight dark:text-white text-gray-900"
+                                        >
+                                            Enterprise Design tips
+                                        </h5>
+                                        <p
+                                            class="mb-2 font-light text-gray-500 dark:text-gray-400"
+                                        >
+                                            Over the past year, Volosoft has
+                                            undergone changes.
+                                        </p>
+                                        <a
+                                            href="#"
+                                            class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                                        >
+                                            Read in 14 minutes
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="mb-6 flex items-center">
+                                    <a href="#" class="shrink-0">
+                                        <img
+                                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-3.png"
+                                            class="mr-4 max-w-full w-24 h-24 rounded-lg"
+                                            alt="Image 3"
+                                        />
+                                    </a>
+                                    <div>
+                                        <h5
+                                            class="mb-2 text-lg font-bold leading-tight dark:text-white text-gray-900"
+                                        >
+                                            Partnered up with Google
+                                        </h5>
+                                        <p
+                                            class="mb-2 font-light text-gray-500 dark:text-gray-400"
+                                        >
+                                            Over the past year, Volosoft has
+                                            undergone changes.
+                                        </p>
+                                        <a
+                                            href="#"
+                                            class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                                        >
+                                            Read in 9 minutes
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
                                 <a
-                                    class="page-link"
                                     href="#"
-                                    tabindex="-1"
-                                    aria-disabled="true">Previous</a
+                                    class="flex justify-center items-center mb-3 w-full h-48 bg-gray-100 rounded-lg dark:bg-gray-700"
                                 >
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item active" aria-current="page">
-                                <a class="page-link" href="#"
-                                    >2 <span class="sr-only">(current)</span></a
+                                    <svg
+                                        aria-hidden="true"
+                                        class="w-8 h-8 text-gray-400"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        ><path
+                                            fill-rule="evenodd"
+                                            d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                                            clip-rule="evenodd"></path></svg
+                                    >
+                                </a>
+                                <p
+                                    class="mb-2 text-sm font-light text-gray-500 dark:text-gray-400"
                                 >
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
+                                    Students and Teachers, save up to 60% on
+                                    Flowbite Creative Cloud.
+                                </p>
+                                <p
+                                    class="text-xs font-light text-gray-400 uppercase dark:text-gray-500"
+                                >
+                                    Ads placeholder
+                                </p>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
-            </section>
+            </main>
+            <aside aria-label="Related articles" class="py-8 bg-white dark:bg-gray-900"></aside>
 
             <Footer />
         </main>
