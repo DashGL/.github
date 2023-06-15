@@ -3,9 +3,8 @@ import BaseHead from "../../components/BaseHead.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 
-import TutorialCard from "../../components/elements/TutorialCard.astro";
+import Post from "../../components/tutorials/Post.astro";
 
-import BlogCard from "../../components/elements/BlogCard.astro";
 import { getCollection } from "astro:content";
 const posts = (await getCollection("tutorials")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -23,7 +22,7 @@ const posts = (await getCollection("tutorials")).sort(
         <main>
             <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900">
                 <header
-                    class="bg-[url('/banner.png')] w-full h-[460px] xl:h-[537px] bg-no-repeat bg-cover bg-center bg-blend-darken relative"
+                    class="bg-[url('/electrichearts_20201210A_tysontan_office_c.png')] w-full h-[460px] xl:h-[537px] bg-no-repeat bg-cover bg-center bg-blend-darken relative"
                 >
                     <div
                         class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"
@@ -49,19 +48,19 @@ const posts = (await getCollection("tutorials")).sort(
                     <article
                         class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
                     >
-                        <TutorialCard
+                        <Post
                             title="Brickout"
                             description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
                             image="/img/tutorial-1.jpg"
                             url="/tutorials/gtk-brickout/step-01/"
                         />
-                        <TutorialCard
+                        <Post
                             title="Astroids"
                             description="Simple Astroids clone using assets from Kenney's Space Shooter Redux and Space Shooter Extension. The pace of this tutorial will be slightly faster than previous tutorials. As concepts that were introduced one at a time before will now be grouped into a single step. This tutorial will not be drastically different from the Invaders tutorial. We will mainly focus on movement, direction and acceleration. And how to draw the same sprite multiple times to create a wrapping effect. "
                             image="/img/tutorial-2.jpg"
                             url="/tutorials/gtk-astroids/step-01/"
                         />
-                        <TutorialCard
+                        <Post
                             title="Invaders"
                             description="Simple Invaders clone using Kenney's Space Shooter redux pack. In this tutorial we will include sprites to make a more complete looking game, but it will still be fairly simple in nature. We have a group of enemies that fire at the player while moving down the screen and a player that can fire back. We use static arrays to create a very simple bullet management system. And use the pythagorean theorem for basic hit detection. "
                             image="/img/tutorial-3.jpg"
