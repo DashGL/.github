@@ -3,17 +3,98 @@ import Step from "./Step.astro";
 const { pathname } = Astro.url;
 ---
 
-<aside class="hidden xl:block" aria-labelledby="sidebar-label">
-    <div class="xl:w-[336px]">
-        <div
-            class="p-4 mb-6 rounded-lg border border-gray-200 dark:border-gray-700"
-        >
-            <h4
-                class="text-center mb-4 text-sm font-bold text-gray-900 dark:text-white uppercase"
-            >
-                Table of Contents 
-            </h4>
-            <Step/>
-        </div>
-    </div>
-</aside>
+<div
+    class="pb-6 mb-4 border-b border-gray-200 font-medium text-gray-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:divide-gray-700"
+>
+    <h4
+        class="mb-4 pb-4 text-sm font-bold text-gray-900 uppercase dark:text-white border-b border-gray-200 dark:border-gray-700"
+    >
+        Table of Contents
+    </h4>
+    <Step
+        title="Open a Window"
+        image="https://gtk.dashgl.com/img/bricks_001.png"
+        url=""
+    />
+    <Step
+        title="Draw a Triangle"
+        image="https://gtk.dashgl.com/img/bricks_002.png"
+        url=""
+    />
+    <Step
+        title="Separate Shaders"
+        image="https://gtk.dashgl.com/img/bricks_003.png"
+        url=""
+    />
+    <Step
+        title="Shader Program"
+        image="https://gtk.dashgl.com/img/bricks_004.png"
+        url=""
+    />
+    <Step
+        title="Orthagonal Coordinates"
+        image="https://gtk.dashgl.com/img/bricks_005.png"
+        url=""
+    />
+    <Step
+        title="Draw a Ball"
+        image="https://gtk.dashgl.com/img/bricks_006.png"
+        url=""
+    />
+    <Step
+        title="Set Ball Position"
+        image="https://gtk.dashgl.com/img/bricks_007.png"
+        url=""
+    />
+    <Step
+        title="Move a Ball"
+        image="https://gtk.dashgl.com/img/bricks_008.png"
+        url=""
+    />
+    <Step
+        title="Bounce a Ball"
+        image="https://gtk.dashgl.com/img/bricks_009.png"
+        url=""
+    />
+    <Step
+        title="Define Ball Struct"
+        image="https://gtk.dashgl.com/img/bricks_010.png"
+        url=""
+    />
+    <Step
+        title="Draw a Paddle"
+        image="https://gtk.dashgl.com/img/bricks_011.png"
+        url=""
+    />
+    <Step
+        title="Paddle Uniform Color"
+        image="https://gtk.dashgl.com/img/bricks_012.png"
+        url=""
+    />
+
+    <Step
+        title="Keydown Callbacks"
+        image="https://gtk.dashgl.com/img/bricks_013.png"
+        url=""
+    />
+    <Step
+        title="Paddle Hit Detection"
+        image="https://gtk.dashgl.com/img/bricks_014.png"
+        url=""
+    />
+    <Step
+        title="Draw Row of Bricks"
+        image="https://gtk.dashgl.com/img/bricks_015.png"
+        url=""
+    />
+    <Step
+        title="Draw Grid of Bricks"
+        image="https://gtk.dashgl.com/img/bricks_016.png"
+        url=""
+    />
+    <Step
+        title="Break Some Bricks"
+        image="https://gtk.dashgl.com/img/bricks_017.png"
+        url=""
+    />
+</div>

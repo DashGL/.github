@@ -47,28 +47,6 @@ const posts = (await getCollection("tutorials")).sort(
                 <div
                     class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-white dark:bg-gray-800 rounded xl:-m-32 xl:p-9 xl:mx-auto"
                 >
-                    <article
-                        class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
-                    >
-                        <Post
-                            title="Brickout"
-                            description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
-                            image="/img/tutorial-1.jpg"
-                            url="/tutorials/gtk-brickout/step-01/"
-                        />
-                        <Post
-                            title="Astroids"
-                            description="Simple Astroids clone using assets from Kenney's Space Shooter Redux and Space Shooter Extension. The pace of this tutorial will be slightly faster than previous tutorials. As concepts that were introduced one at a time before will now be grouped into a single step. This tutorial will not be drastically different from the Invaders tutorial. We will mainly focus on movement, direction and acceleration. And how to draw the same sprite multiple times to create a wrapping effect. "
-                            image="/img/tutorial-2.jpg"
-                            url="/tutorials/gtk-astroids/step-01/"
-                        />
-                        <Post
-                            title="Invaders"
-                            description="Simple Invaders clone using Kenney's Space Shooter redux pack. In this tutorial we will include sprites to make a more complete looking game, but it will still be fairly simple in nature. We have a group of enemies that fire at the player while moving down the screen and a player that can fire back. We use static arrays to create a very simple bullet management system. And use the pythagorean theorem for basic hit detection. "
-                            image="/img/tutorial-3.jpg"
-                            url="/tutorials/gtk-invaders/step-01/"
-                        />
-                    </article>
                     <aside
                         class="block"
                         aria-labelledby="sidebar-label"
@@ -108,8 +86,34 @@ const posts = (await getCollection("tutorials")).sort(
                             <AdSpace />
                         </div>
                     </aside>
+
+                    <article
+                        class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
+                    >
+                        <Post
+                            title="Brickout"
+                            description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
+                            image="/img/tutorial-1.jpg"
+                            url="/tutorials/gtk-brickout/step-01/"
+                        />
+                        <Post
+                            title="Astroids"
+                            description="Simple Astroids clone using assets from Kenney's Space Shooter Redux and Space Shooter Extension. The pace of this tutorial will be slightly faster than previous tutorials. As concepts that were introduced one at a time before will now be grouped into a single step. This tutorial will not be drastically different from the Invaders tutorial. We will mainly focus on movement, direction and acceleration. And how to draw the same sprite multiple times to create a wrapping effect. "
+                            image="/img/tutorial-2.jpg"
+                            url="/tutorials/gtk-astroids/step-01/"
+                        />
+                        <Post
+                            title="Invaders"
+                            description="Simple Invaders clone using Kenney's Space Shooter redux pack. In this tutorial we will include sprites to make a more complete looking game, but it will still be fairly simple in nature. We have a group of enemies that fire at the player while moving down the screen and a player that can fire back. We use static arrays to create a very simple bullet management system. And use the pythagorean theorem for basic hit detection. "
+                            image="/img/tutorial-3.jpg"
+                            url="/tutorials/gtk-invaders/step-01/"
+                        />
+                    </article>
+                    
                 </div>
             </main>
+
+            <!-- Add Spacing after main -->
             <aside
                 aria-label="Related articles"
                 class="py-8 bg-white dark:bg-gray-900"
