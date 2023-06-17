@@ -1,24 +1,41 @@
 <div
-    class="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+    class="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 px-2.5 "
 >
+    <header class="flex justify-between items-center text-gray-500">
+        <span
+            class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center py-0.5 rounded dark:bg-primary-200 dark:text-primary-800"
+        >
+            <svg
+                class="mr-1 w-3 h-3"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                    fill-rule="evenodd"
+                    d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                    clip-rule="evenodd"></path><path
+                    d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path></svg
+            >
+            Tool
+        </span>
+        <span class="text-sm">14 days ago</span>
+    </header>
+
     <div
-        class="gap-8 items-center p-2 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2"
+        class="gap-x-4 -mt-4 -mb-10 items-center max-w-screen-xl md:grid md:grid-cols-2"
     >
-        <img
-            class="w-full rounded-lg shadow-lg"
-            src="/rources/kion-pso2.png"
-            alt=""
-        />
-        <div class="mt-4 md:mt-0">
+        <img class="rounded-lg" src="/rources/kion-pso2.png" alt="" />
+
+        <div class="md:mt-0">
             <h3
                 class="text-lg font-bold leading-tight text-gray-900 dark:text-white"
             >
-                Thank you for supporting in planting trees work.
+                Phantasy Star Online Model Viewer and Exporter
             </h3>
             <p class="text-base font-normal text-gray-500 dark:text-gray-400">
-                Our fundraisers are a creative bunch when it comes to taking on
-                challenges, from beard shaves and bake sales to stand-up comedy
-                and streaming marathons. There is something for everyone.
+                Online tool that allows you to view and explort assets from the
+                game Phantasy Star Online version 2 for Dreamcast with bones and
+                animations.
             </p>
 
             <div
@@ -30,7 +47,7 @@
                     class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                     role="button"
                 >
-                    Donate now
+                    Kion
                 </a>
 
                 <a
@@ -50,9 +67,36 @@
                             d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"
                         ></path>
                     </svg>
-                    Share this Fundraiser
+                    View on Github
                 </a>
             </div>
         </div>
     </div>
+
+    <footer class="flex justify-between items-center">
+        <div class="flex items-center">
+            <img
+                class="w-7 h-7 rounded-full"
+                src="/profile.jpg"
+                alt="Kion DashGL avatar"
+            />
+            <span class="font-medium dark:text-white">Kion</span>
+        </div>
+        <a
+            href="#"
+            class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"
+        >
+            Read More
+            <svg
+                class="ml-2 w-4 h-4"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                    fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path></svg
+            >
+        </a>
+    </footer>
 </div>
