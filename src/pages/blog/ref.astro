@@ -1,0 +1,50 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_DESCRIPTION } from "../../consts";
+
+import Banner from "../../components/elements/Banner.astro";
+import BlogCard from "../../components/elements/BlogCard.astro";
+
+import { getCollection } from "astro:content";
+const posts = (await getCollection("blog")).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title="Blog" description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Navbar />
+		<main>
+			<Banner
+				title="Blog Posts"
+				description="Blog posts are a stream of consciousness, where I'm taking notes on something as I'm working through it. Or making random notes about something on my mind."
+				color="rgb(222, 255, 245)"
+			/>
+
+			<section class="bg-white dark:bg-gray-900">
+				<div class="pb-4 px-4 mx-auto max-w-screen-xl">
+					<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+						{
+							posts.map((post) => (
+								<BlogCard
+									title={post.data.title}
+									description={post.data.description}
+									date={post.data.pubDate}
+									image={post.data.heroImage}
+									url={`/blog/${post.slug}/`}
+								/>
+							))
+						}
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

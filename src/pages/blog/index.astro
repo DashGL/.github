@@ -2,49 +2,117 @@
 import BaseHead from "../../components/BaseHead.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
-import { SITE_DESCRIPTION } from "../../consts";
 
-import Banner from "../../components/elements/Banner.astro";
+import AdSpace from "../../components/tutorials/AdSpace.astro";
 import BlogCard from "../../components/elements/BlogCard.astro";
 
 import { getCollection } from "astro:content";
 const posts = (await getCollection("blog")).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title="Blog" description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Navbar />
-		<main>
-			<Banner
-				title="Blog Posts"
-				description="Blog posts are a stream of consciousness, where I'm taking notes on something as I'm working through it. Or making random notes about something on my mind."
-				color="rgb(222, 255, 245)"
-			/>
+    <head>
+        <BaseHead title="Tutorials" description="List view of Tutorials" />
+    </head>
 
-			<section class="bg-white dark:bg-gray-900">
-				<div class="pb-4 px-4 mx-auto max-w-screen-xl">
-					<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-						{
-							posts.map((post) => (
-								<BlogCard
-									title={post.data.title}
-									description={post.data.description}
-									date={post.data.pubDate}
-									image={post.data.heroImage}
-									url={`/blog/${post.slug}/`}
-								/>
-							))
-						}
-					</div>
-				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
+    <body>
+        <Navbar />
+        <main>
+            <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900">
+                <header
+                    class="bg-[url('/sync.jpg')] w-full h-[460px] xl:h-[537px] bg-no-repeat bg-cover bg-center bg-blend-darken relative"
+                >
+                    <div
+                        class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"
+                    >
+                    </div>
+                    <div
+                        class="absolute top-20 left-1/2 px-4 mx-auto w-full max-w-screen-xl -translate-x-1/2 xl:top-1/2 xl:-translate-y-1/2 xl:px-0"
+                    >
+                        <h1
+                            class="mb-4 max-w-4xl text-2xl font-extrabold leading-none text-white sm:text-3xl lg:text-4xl"
+                        >
+                            Blog
+                        </h1>
+                        <p class="text-lg font-normal text-gray-300">
+                            Stream of consciousness and other rants and
+                            ramblings
+                        </p>
+                    </div>
+                </header>
+                <div
+                    class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-white dark:bg-gray-800 rounded xl:-m-32 xl:p-9 xl:mx-auto"
+                >
+                    <aside class="block" aria-labelledby="sidebar-label">
+                        <div class="xl:w-[336px]">
+                            <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
+
+                            <div class="mb-4">
+                                <h3
+                                    class="mb-2 font-semibold leading-none text-gray-900 dark:text-white"
+                                >
+                                    Tags
+                                </h3>
+                                <ul
+                                    class="w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                >
+                                    <li
+                                        class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+                                    >
+                                        Hardware
+                                    </li>
+                                    <li
+                                        class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                                    >
+                                        Musing
+                                    </li>
+                                    <li
+                                        class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                                    >
+                                        Setup
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <AdSpace />
+                        </div>
+                    </aside>
+
+                    <article
+                        class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
+                    >
+                        
+                            {
+                                posts.map(
+                                    (post, index) =>
+                                        index < 10 && (
+                                            <BlogCard
+                                                title={post.data.title}
+                                                description={
+                                                    post.data.description
+                                                }
+                                                date={post.data.pubDate}
+                                                image={post.data.heroImage}
+                                                url={`/blog/${post.slug}/`}
+                                            />
+                                        )
+                                )
+                            }
+                    </article>
+                </div>
+            </main>
+
+            <!-- Add Spacing after main -->
+            <aside
+                aria-label="Related articles"
+                class="py-8 bg-white dark:bg-gray-900"
+            >
+            </aside>
+
+            <Footer />
+        </main>
+    </body>
 </html>
