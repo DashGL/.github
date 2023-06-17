@@ -1,25 +1,41 @@
 ---
-const ad = {
-    url: "https://www.libreoffice.org/",
-    image: "/ads/libbie.png",
-    text: "Come checkout Libre Office Libbie the Cyber Onyx",
-};
+const ads = [
+    {
+        url: "https://www.libreoffice.org/",
+        image: "/ads/libbie.png",
+        text: "Come checkout Libre Office Libbie the Cyber Onyx",
+    },
+    {
+        url: "https://github.com/squishy-scsi/squishy",
+        image: "/ads/sachi.jpeg",
+        text: "Squishy: The SCSI Multitool",
+    },
+    {
+        url: "https://kde.org/",
+        image: "/ads/konqi.png",
+        text: "Plasma: The next generation desktop for Linux",
+    },
+    {
+        url: "https://krita.org/",
+        image: "/ads/krita.png",
+        text: "Krita is a professional FREE and open source painting program",
+    },
+];
+
+const ad = ads[Math.floor(Math.random() * ads.length)]
 
 const { url, image, text } = ad;
 ---
 
 <div>
-    <h3 class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Ad Space</h3>
+    <h3 class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
+        Ad Space
+    </h3>
 
     <a href={url}>
-        <img src={image} class="rounded-xl"/>
-        <p class="my-2 text-sm font-light text-gray-500 dark:text-gray-400">
+        <img src={image} class="rounded-xl" />
+        <p class="my-2 text-xs font-light text-gray-400 uppercase dark:text-gray-500">
             {text}
-        </p>
-        <p
-            class="text-xs font-light text-gray-400 uppercase dark:text-gray-500"
-        >
-            Link to Project
         </p>
     </a>
 </div>
