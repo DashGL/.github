@@ -1,0 +1,30 @@
+---
+import FormattedDate from "../elements/FormattedDate.astro";
+import Book from '../svg/Book.astro'
+
+enum PostType {
+  Blog = "Blog",
+  Asset = "Asset",
+  FanProject = "FanProject",
+  Tool = "Tool"
+}
+
+export interface Props {
+    type?: PostType;
+    date: Date;
+}
+
+const { type = PostType.Blog, date } = Astro.props;
+---
+
+<header class="flex justify-between items-center text-gray-500">
+    <span
+        class="bg-primary-100 text-primary-800 text-sm font-medium inline-flex items-center dark:bg-primary-200 dark:text-primary-800"
+    >
+        <Book/>
+        { type }
+    </span>
+    <span class="text-sm">
+        <FormattedDate date={date} />
+    </span>
+</header>
