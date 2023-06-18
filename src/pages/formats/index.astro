@@ -5,9 +5,9 @@ import Footer from "../../components/Footer.astro";
 
 import Post from "../../components/tutorials/Post.astro";
 import AdSpace from "../../components/tutorials/AdSpace.astro";
-import Support from "../../components/tutorials/Support.astro";
 
 import { getCollection } from "astro:content";
+import Banner from "../../components/elements/Banner.astro";
 const posts = (await getCollection("tutorials")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
@@ -21,105 +21,148 @@ const posts = (await getCollection("tutorials")).sort(
 
     <body>
         <Navbar />
-        <main>
-            <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900">
-                <header
-                    class="bg-[url('/Tysontan.full.139283.jpg')] w-full h-[460px] xl:h-[537px] bg-no-repeat bg-cover bg-center bg-blend-darken relative"
-                >
-                    <div
-                        class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"
-                    >
-                    </div>
-                    <div
-                        class="absolute top-20 left-1/2 px-4 mx-auto w-full max-w-screen-xl -translate-x-1/2 xl:top-1/2 xl:-translate-y-1/2 xl:px-0"
-                    >
-                        <h1
-                            class="mb-4 max-w-4xl text-2xl font-extrabold leading-none text-white sm:text-3xl lg:text-4xl"
-                        >
-                            Formats
-                        </h1>
-                        <p class="text-lg font-normal text-gray-300">
-                            Documentation for working with interchange file formats
-                        </p>
-                    </div>
-                </header>
-                <div
-                    class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-white dark:bg-gray-800 rounded xl:-m-32 xl:p-9 xl:mx-auto"
-                >
-                    <aside
-                        class="block"
-                        aria-labelledby="sidebar-label"
-                    >
-                        <div class="xl:w-[336px]">
-                            <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
-                            
-                            <div class="mb-4">
-                                <h3 class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Dash Model Format</h3>
-                                <ul class="w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                    <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">C</li>
-                                    <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">Python</li>
-                                    <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">Golang</li>
-                                </ul>
-                            </div>
 
-                            <div class="mb-4">
-                                <h3 class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">GLTF</h3>
-                                <ul class="w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                    <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">FreeGlut</li>
-                                    <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">SDL</li>
-                                    <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">GTK</li>
-                                    <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">Embeded</li>
-                                </ul>
-                            </div>
+        <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900">
+            <Banner
+                title="Formats"
+                description="Documentation for working with interchange file formats"
+                image="/Tysontan.full.139283.jpg"
+            />
 
-                            <div class="mb-4">
-                                <h3 class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Noesis</h3>
-                                <ul class="w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                    <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">OpenGL 1.0</li>
-                                    <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">OpenGL 2.0ES</li>
-                                    <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">OpenGL 3.0</li>
-                                    <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">Vulkan</li>
-                                </ul>
-                            </div>
-                                
-                            <AdSpace />
-                        </div>
-                    </aside>
-
-                    <article
-                        class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
-                    >
-                        <Post
-                            title="Brickout"
-                            description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
-                            image="/img/tutorial-1.jpg"
-                            url="/tutorials/gtk-brickout/step-01/"
-                        />
-                        <Post
-                            title="Astroids"
-                            description="Simple Astroids clone using assets from Kenney's Space Shooter Redux and Space Shooter Extension. The pace of this tutorial will be slightly faster than previous tutorials. As concepts that were introduced one at a time before will now be grouped into a single step. This tutorial will not be drastically different from the Invaders tutorial. We will mainly focus on movement, direction and acceleration. And how to draw the same sprite multiple times to create a wrapping effect. "
-                            image="/img/tutorial-2.jpg"
-                            url="/tutorials/gtk-astroids/step-01/"
-                        />
-                        <Post
-                            title="Invaders"
-                            description="Simple Invaders clone using Kenney's Space Shooter redux pack. In this tutorial we will include sprites to make a more complete looking game, but it will still be fairly simple in nature. We have a group of enemies that fire at the player while moving down the screen and a player that can fire back. We use static arrays to create a very simple bullet management system. And use the pythagorean theorem for basic hit detection. "
-                            image="/img/tutorial-3.jpg"
-                            url="/tutorials/gtk-invaders/step-01/"
-                        />
-                    </article>
-                    
-                </div>
-            </main>
-
-            <!-- Add Spacing after main -->
-            <aside
-                aria-label="Related articles"
-                class="py-8 bg-white dark:bg-gray-900"
+            <div
+                class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-white dark:bg-gray-800 rounded xl:-m-32 xl:p-9 xl:mx-auto"
             >
-            </aside>
+                <aside class="block" aria-labelledby="sidebar-label">
+                    <div class="xl:w-[336px]">
+                        <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
 
-            <Footer />
+                        <div class="mb-4">
+                            <h3
+                                class="mb-2 font-semibold leading-none text-gray-900 dark:text-white"
+                            >
+                                Dash Model Format
+                            </h3>
+                            <ul
+                                class="w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            >
+                                <li
+                                    class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+                                >
+                                    C
+                                </li>
+                                <li
+                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                                >
+                                    Python
+                                </li>
+                                <li
+                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                                >
+                                    Golang
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-4">
+                            <h3
+                                class="mb-2 font-semibold leading-none text-gray-900 dark:text-white"
+                            >
+                                GLTF
+                            </h3>
+                            <ul
+                                class="w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            >
+                                <li
+                                    class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+                                >
+                                    FreeGlut
+                                </li>
+                                <li
+                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                                >
+                                    SDL
+                                </li>
+                                <li
+                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                                >
+                                    GTK
+                                </li>
+                                <li
+                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                                >
+                                    Embeded
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-4">
+                            <h3
+                                class="mb-2 font-semibold leading-none text-gray-900 dark:text-white"
+                            >
+                                Noesis
+                            </h3>
+                            <ul
+                                class="w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            >
+                                <li
+                                    class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+                                >
+                                    OpenGL 1.0
+                                </li>
+                                <li
+                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                                >
+                                    OpenGL 2.0ES
+                                </li>
+                                <li
+                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                                >
+                                    OpenGL 3.0
+                                </li>
+                                <li
+                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                                >
+                                    Vulkan
+                                </li>
+                            </ul>
+                        </div>
+
+                        <AdSpace />
+                    </div>
+                </aside>
+
+                <article
+                    class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
+                >
+                    <Post
+                        title="Brickout"
+                        description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
+                        image="/img/tutorial-1.jpg"
+                        url="/tutorials/gtk-brickout/step-01/"
+                    />
+                    <Post
+                        title="Astroids"
+                        description="Simple Astroids clone using assets from Kenney's Space Shooter Redux and Space Shooter Extension. The pace of this tutorial will be slightly faster than previous tutorials. As concepts that were introduced one at a time before will now be grouped into a single step. This tutorial will not be drastically different from the Invaders tutorial. We will mainly focus on movement, direction and acceleration. And how to draw the same sprite multiple times to create a wrapping effect. "
+                        image="/img/tutorial-2.jpg"
+                        url="/tutorials/gtk-astroids/step-01/"
+                    />
+                    <Post
+                        title="Invaders"
+                        description="Simple Invaders clone using Kenney's Space Shooter redux pack. In this tutorial we will include sprites to make a more complete looking game, but it will still be fairly simple in nature. We have a group of enemies that fire at the player while moving down the screen and a player that can fire back. We use static arrays to create a very simple bullet management system. And use the pythagorean theorem for basic hit detection. "
+                        image="/img/tutorial-3.jpg"
+                        url="/tutorials/gtk-invaders/step-01/"
+                    />
+                </article>
+            </div>
         </main>
+
+        <!-- Add Spacing after main -->
+        <aside
+            aria-label="Related articles"
+            class="py-8 bg-white dark:bg-gray-900"
+        >
+        </aside>
+
+        <Footer />
     </body>
 </html>
