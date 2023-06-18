@@ -22,7 +22,7 @@ const { type = PostType.Blog, date } = Astro.props;
         class="bg-primary-100 text-primary-800 text-sm font-medium inline-flex items-center dark:bg-primary-200 dark:text-primary-800"
     >
         <Book/>
-        { type }
+        <span class="ps-2">{ type }</span>
     </span>
     <span class="text-sm">
         <FormattedDate date={date} />
