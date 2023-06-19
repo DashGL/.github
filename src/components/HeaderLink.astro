@@ -6,7 +6,7 @@ export interface Props {
 
 const { text, url } = Astro.props;
 const { pathname } = Astro.url;
-const isActive = url === pathname || url === pathname.replace(/\/$/, "");
+const isActive = pathname.replace(/\/$/, "").indexOf(url) === 0
 ---
 
 {
