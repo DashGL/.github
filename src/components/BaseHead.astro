@@ -3,14 +3,12 @@ export interface Props {
 	title: string;
 	description: string;
 	image?: string;
-	css?: string;
 }
 
 const {
 	title,
 	description,
 	image = "/social-share.png",
-	css = "none",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
