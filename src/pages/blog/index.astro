@@ -20,9 +20,7 @@ const posts = (await getCollection("blog")).sort(
     <aside class="block" aria-labelledby="sidebar-label">
         <div class="xl:w-[336px]">
             <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
-
             <TagList title="Tags" tags={["Hardware", "Musing", "Setup"]} />
-
             <AdSpace />
         </div>
     </aside>
@@ -39,8 +37,7 @@ const posts = (await getCollection("blog")).sort(
                             description={post.data.description}
                             date={post.data.pubDate}
                             image={post.data.heroImage}
-                            url={`/blog/${post.slug}/`}
-                            source={null}
+                            url={`/blog/${post.slug}`}
                         />
                     )
             )

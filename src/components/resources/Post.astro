@@ -1,14 +1,20 @@
 ---
 import Header from "./Header.astro";
 import Source from "./Source.astro";
+import Asset from "./Asset.astro"
+import { PostType } from "../../consts"
 
 export interface Props {
     title: string;
     description: string;
-    date?: Date;
+    date: Date;
     image?: string;
-    source: string | null;
     url: string;
+    source?: string;
+    artistName?: string;
+    artistLink?: string;
+    download?: string;
+    type?: PostType;
 }
 
 const {
@@ -16,15 +22,19 @@ const {
     description,
     date = new Date(),
     image = "https://placehold.co/600x400",
-    source = null,
     url,
+    source = undefined,
+    artistName = undefined,
+    artistLink = undefined,
+    download  = undefined,
+    type= PostType.Blog
 } = Astro.props;
 ---
 
 <div
     class="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 pt-4 px-2.5"
 >
-    <Header date={date} />
+    <Header type={type} date={date} />
     <div
         class="gap-x-4 -mt-4 -mb-10 items-center max-w-screen-xl md:grid md:grid-cols-2"
     >
@@ -40,6 +50,13 @@ const {
                 {description}
             </p>
 
+            {
+                (artistName && artistLink && download) && <Asset
+                    name={artistName}
+                    url={artistLink}
+                    download={download}
+                />
+            }
             {source && <Source url={source} />}
         </div>
     </div>

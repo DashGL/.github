@@ -3,3 +3,11 @@
 
 export const SITE_TITLE = 'DashGL';
 export const SITE_DESCRIPTION = 'Welcome to my website!';
+
+export enum PostType {
+    Blog = "Blog",
+    Asset = "Asset",
+    FanProject = "FanProject",
+    Tool = "Tool"
+  }
+  

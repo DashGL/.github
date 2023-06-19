@@ -1,13 +1,7 @@
 ---
 import FormattedDate from "../elements/FormattedDate.astro";
 import Book from '../svg/Book.astro'
-
-enum PostType {
-  Blog = "Blog",
-  Asset = "Asset",
-  FanProject = "FanProject",
-  Tool = "Tool"
-}
+import { PostType } from "../../consts"
 
 export interface Props {
     type?: PostType;
