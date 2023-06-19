@@ -1,5 +1,8 @@
 ---
+import BaseHead from "./BaseHead.astro";
+import Navbar from "./Navbar.astro";
 import Banner from "./elements/Banner.astro";
+import Footer from "./Footer.astro";
 
 export interface Props {
     title: string;
@@ -10,14 +13,22 @@ export interface Props {
 const { title, description, image } = Astro.props;
 ---
 
-<Banner
-    title={ title }
-    description={ description }
-    image={ image }
-/>
-<div
-    class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-white dark:bg-gray-800 rounded xl:-m-32 xl:p-9 xl:mx-auto rounded-xl"
->
-    <slot />
-</div>
-<div class="py-12"></div>
+<html lang="en">
+    <head>
+        <BaseHead title={title} description={description} />
+    </head>
+
+    <body class="bg-white dark:bg-gray-900">
+        <Navbar />
+        <main class="pb-16 lg:pb-24">
+            <Banner title={title} description={description} image={image} />
+            <div
+                class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-white dark:bg-gray-800 rounded xl:-m-32 xl:p-9 xl:mx-auto rounded-xl"
+            >
+                <slot/>
+            </div>
+            <div class="py-12"></div>
+        </main>
+        <Footer />
+    </body>
+</html>

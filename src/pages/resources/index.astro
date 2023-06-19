@@ -1,92 +1,73 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Navbar from "../../components/Navbar.astro";
 import Container from "../../components/Container.astro";
-import Footer from "../../components/Footer.astro";
-
 import Post from "../../components/resources/Post.astro";
 import AdSpace from "../../components/tutorials/AdSpace.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <BaseHead title="Tutorials" description="List view of Tutorials" />
-    </head>
+<Container
+    title="Resources"
+    description="Resources are effectively bookmarks for my own projects or projects I want to highlight"
+    image="/banner/resources.png"
+>
+    <aside class="block" aria-labelledby="sidebar-label">
+        <div class="xl:w-[336px]">
+            <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
 
-    <body>
-        <Navbar />
-
-        <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900">
-            <Container
-                title="Resources"
-                description="Resources are effectively bookmarks for my own projects or projects I want to highlight"
-                image="/assets/_nologotronbonne_kioncommission_geckoboyadvance_preview.png"
-            >
-                <aside class="block" aria-labelledby="sidebar-label">
-                    <div class="xl:w-[336px]">
-                        <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
-
-                        <div class="mb-4">
-                            <h3
-                                class="mb-2 font-semibold leading-none text-gray-900 dark:text-white"
-                            >
-                                Filter
-                            </h3>
-                            <ul
-                                class="w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                            >
-                                <li
-                                    class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600"
-                                >
-                                    Tool
-                                </li>
-                                <li
-                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
-                                >
-                                    Fan Project
-                                </li>
-                                <li
-                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
-                                >
-                                    Assets
-                                </li>
-                            </ul>
-                        </div>
-
-                        <AdSpace />
-                    </div>
-                </aside>
-
-                <article
-                    class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
+            <div class="mb-4">
+                <h3
+                    class="mb-2 font-semibold leading-none text-gray-900 dark:text-white"
                 >
-                    <Post
-                        title="Megaman Legends Save State Viewer"
-                        description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
-                        image="/img/tutorial-1.jpg"
-                        url="/tutorials/gtk-brickout/step-01/"
-                        source={null}
-                    />
+                    Filter
+                </h3>
+                <ul
+                    class="w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                >
+                    <li
+                        class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+                    >
+                        Tool
+                    </li>
+                    <li
+                        class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                    >
+                        Fan Project
+                    </li>
+                    <li
+                        class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
+                    >
+                        Assets
+                    </li>
+                </ul>
+            </div>
 
-                    <Post
-                        title="Megaman Legends Save State Viewer"
-                        description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
-                        image="/img/tutorial-1.jpg"
-                        url="/tutorials/gtk-brickout/step-01/"
-                        source={null}
-                    />
-                    <Post
-                        title="Megaman Legends Save State Viewer"
-                        description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
-                        image="/img/tutorial-1.jpg"
-                        url="/tutorials/gtk-brickout/step-01/"
-                        source={null}
-                    />
-                </article>
-            </Container>
-        </main>
+            <AdSpace />
+        </div>
+    </aside>
 
-        <Footer />
-    </body>
-</html>
+    <article
+        class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
+    >
+        <Post
+            title="Megaman Legends Save State Viewer"
+            description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
+            image="/img/tutorial-1.jpg"
+            url="/tutorials/gtk-brickout/step-01/"
+            source={null}
+        />
+
+        <Post
+            title="Megaman Legends Save State Viewer"
+            description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
+            image="/img/tutorial-1.jpg"
+            url="/tutorials/gtk-brickout/step-01/"
+            source={null}
+        />
+        <Post
+            title="Megaman Legends Save State Viewer"
+            description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
+            image="/img/tutorial-1.jpg"
+            url="/tutorials/gtk-brickout/step-01/"
+            source={null}
+        />
+    </article>
+</Container>

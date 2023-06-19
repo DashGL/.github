@@ -1,8 +1,5 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Navbar from "../../components/Navbar.astro";
 import Container from "../../components/Container.astro";
-import Footer from "../../components/Footer.astro";
 
 import AdSpace from "../../components/tutorials/AdSpace.astro";
 import Post from "../../components/resources/Post.astro";
@@ -15,57 +12,40 @@ const posts = (await getCollection("blog")).sort(
 );
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <BaseHead title="Tutorials" description="List view of Tutorials" />
-    </head>
+<Container
+    title="Blog"
+    description="Stream of consciousness and other rants and ramblings"
+    image="/banner/blog.png"
+>
+    <aside class="block" aria-labelledby="sidebar-label">
+        <div class="xl:w-[336px]">
+            <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
 
-    <body>
-        <Navbar />
-        <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900">
-            <Container
-                title="Blog"
-                description="Stream of consciousness and other rants and ramblings"
-                image="/sync.jpg"
-            >
-                <aside class="block" aria-labelledby="sidebar-label">
-                    <div class="xl:w-[336px]">
-                        <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
+            <TagList title="Tags" tags={["Hardware", "Musing", "Setup"]} />
 
-                        <TagList
-                            title="Tags"
-                            tags={["Hardware", "Musing", "Setup"]}
+            <AdSpace />
+        </div>
+    </aside>
+
+    <article
+        class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
+    >
+        {
+            posts.map(
+                (post, index) =>
+                    index < 10 && (
+                        <Post
+                            title={post.data.title}
+                            description={post.data.description}
+                            date={post.data.pubDate}
+                            image={post.data.heroImage}
+                            url={`/blog/${post.slug}/`}
+                            source={null}
                         />
+                    )
+            )
+        }
 
-                        <AdSpace />
-                    </div>
-                </aside>
-
-                <article
-                    class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
-                >
-                    {
-                        posts.map(
-                            (post, index) =>
-                                index < 10 && (
-                                    <Post
-                                        title={post.data.title}
-                                        description={post.data.description}
-                                        date={post.data.pubDate}
-                                        image={post.data.heroImage}
-                                        url={`/blog/${post.slug}/`}
-                                        source={null}
-                                    />
-                                )
-                        )
-                    }
-
-                    <Pagination />
-                </article>
-            </Container>
-        </main>
-
-        <Footer />
-    </body>
-</html>
+        <Pagination />
+    </article>
+</Container>
