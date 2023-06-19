@@ -1,14 +1,15 @@
 ---
 import BaseHead from "../../components/BaseHead.astro";
 import Navbar from "../../components/Navbar.astro";
+import Container from "../../components/Container.astro";
 import Footer from "../../components/Footer.astro";
 
 import AdSpace from "../../components/tutorials/AdSpace.astro";
 import Post from "../../components/resources/Post.astro";
 import Pagination from "../../components/elements/Pagination.astro";
+import TagList from "../../components/elements/TagList.astro";
 
 import { getCollection } from "astro:content";
-import Banner from "../../components/elements/Banner.astro";
 const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
@@ -23,45 +24,19 @@ const posts = (await getCollection("blog")).sort(
     <body>
         <Navbar />
         <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900">
-            <Banner
+            <Container
                 title="Blog"
                 description="Stream of consciousness and other rants and ramblings"
                 image="/sync.jpg"
-            />
-
-            <div
-                class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-white dark:bg-gray-800 rounded xl:-m-32 xl:p-9 xl:mx-auto rounded-xl"
             >
                 <aside class="block" aria-labelledby="sidebar-label">
                     <div class="xl:w-[336px]">
                         <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
 
-                        <div class="mb-4">
-                            <h3
-                                class="mb-2 font-semibold leading-none text-gray-900 dark:text-white"
-                            >
-                                Tags
-                            </h3>
-                            <ul
-                                class="w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                            >
-                                <li
-                                    class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600"
-                                >
-                                    Hardware
-                                </li>
-                                <li
-                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
-                                >
-                                    Musing
-                                </li>
-                                <li
-                                    class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600"
-                                >
-                                    Setup
-                                </li>
-                            </ul>
-                        </div>
+                        <TagList
+                            title="Tags"
+                            tags={["Hardware", "Musing", "Setup"]}
+                        />
 
                         <AdSpace />
                     </div>
@@ -88,15 +63,8 @@ const posts = (await getCollection("blog")).sort(
 
                     <Pagination />
                 </article>
-            </div>
+            </Container>
         </main>
-
-        <!-- Add Spacing after main -->
-        <aside
-            aria-label="Related articles"
-            class="py-8 bg-white dark:bg-gray-900"
-        >
-        </aside>
 
         <Footer />
     </body>

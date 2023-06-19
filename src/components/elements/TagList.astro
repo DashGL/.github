@@ -1,0 +1,25 @@
+---
+export interface Props {
+    title: string;
+    tags: string[];
+}
+
+const { title, tags } = Astro.props;
+---
+
+<div class="mb-4">
+    <h3 class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
+        {title}
+    </h3>
+    <ul
+        class="w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+    >
+        {
+            tags.map((tag) => (
+                <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    {tag}
+                </li>
+            ))
+        }
+    </ul>
+</div>
