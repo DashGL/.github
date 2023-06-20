@@ -3,6 +3,8 @@ import Container from "../../components/Container.astro";
 
 import Post from "../../components/tutorials/Post.astro";
 import AdSpace from "../../components/tutorials/AdSpace.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import Article from "../../components/Article.astro";
 
 import { getCollection } from "astro:content";
 import TagList from "../../components/elements/TagList.astro";
@@ -17,26 +19,17 @@ const posts = (await getCollection("tutorials")).sort(
     description="Documentation for working with interchange file formats"
     image="/banner/format.png"
 >
-    <aside class="block" aria-labelledby="sidebar-label">
-        <div class="xl:w-[336px]">
-            <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
+    <Sidebar>
+        <TagList
+            title="Dash Model Format"
+            tags={["Summary", "Python", "Golang"]}
+        />
+        <TagList title="GLTF" tags={["Summary"]} />
+        <TagList title="Noesis" tags={["Summary"]} />
+        <AdSpace />
+    </Sidebar>
 
-            <TagList
-                title="Dash Model Format"
-                tags={["Summary", "Python", "Golang"]}
-            />
-
-            <TagList title="GLTF" tags={["Summary"]} />
-
-            <TagList title="Noesis" tags={["Summary"]} />
-
-            <AdSpace />
-        </div>
-    </aside>
-
-    <article
-        class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
-    >
+    <Article>
         <Post
             title="Brickout"
             description="This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. "
@@ -55,5 +48,5 @@ const posts = (await getCollection("tutorials")).sort(
             image="/img/tutorial-3.jpg"
             url="/tutorials/gtk-invaders/step-01/"
         />
-    </article>
+    </Article>
 </Container>

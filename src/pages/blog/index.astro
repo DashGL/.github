@@ -1,7 +1,8 @@
 ---
 import Container from "../../components/Container.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import Article from "../../components/Article.astro";
 
-import AdSpace from "../../components/tutorials/AdSpace.astro";
 import Post from "../../components/resources/Post.astro";
 import Pagination from "../../components/elements/Pagination.astro";
 import TagList from "../../components/elements/TagList.astro";
@@ -17,17 +18,11 @@ const posts = (await getCollection("blog")).sort(
     description="Stream of consciousness and other rants and ramblings"
     image="/banner/blog.png"
 >
-    <aside class="block" aria-labelledby="sidebar-label">
-        <div class="xl:w-[336px]">
-            <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
-            <TagList title="Tags" tags={["Hardware", "Musing", "Setup"]} />
-            <AdSpace />
-        </div>
-    </aside>
+    <Sidebar>
+        <TagList title="Tags" tags={["Hardware", "Musing", "Setup"]} />
+    </Sidebar>
 
-    <article
-        class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
-    >
+    <Article>
         {
             posts.map(
                 (post, index) =>
@@ -44,5 +39,5 @@ const posts = (await getCollection("blog")).sort(
         }
 
         <Pagination />
-    </article>
+    </Article>
 </Container>

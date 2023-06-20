@@ -13,7 +13,8 @@ const post = Astro.props;
 const { Content } = await post.render();
 
 import Container from "../../components/Container.astro";
-import AdSpace from "../../components/tutorials/AdSpace.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import Article from "../../components/Article.astro";
 import TagList from "../../components/elements/TagList.astro";
 ---
 
@@ -22,17 +23,11 @@ import TagList from "../../components/elements/TagList.astro";
 	description="Resources are effectively bookmarks for my own projects or projects I want to highlight"
 	image="/banner/resources.png"
 >
-	<aside class="block" aria-labelledby="sidebar-label">
-		<div class="xl:w-[336px]">
-			<h3 id="sidebar-label" class="sr-only">Sidebar</h3>
-			<TagList title="Filter" tags={["Tool", "Fan Project", "Assets"]} />
-			<AdSpace />
-		</div>
-	</aside>
+	<Sidebar>
+		<TagList title="Filter" tags={["Tool", "Fan Project", "Assets"]} />
+	</Sidebar>
 
-	<article
-		class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
-	>
+	<Article>
 		<Content />
-	</article>
+	</Article>
 </Container>
