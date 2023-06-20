@@ -17,7 +17,7 @@ const posts = (await getCollection("resources")).sort(
     image="/banner/resources.png"
 >
     <aside class="block" aria-labelledby="sidebar-label">
-        <div class="xl:w-[336px]">
+        <div class="lg:w-[336px]">
             <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
             <TagList title="Filter" tags={["Tool", "Fan Project", "Assets"]} />
             <AdSpace />
@@ -25,7 +25,7 @@ const posts = (await getCollection("resources")).sort(
     </aside>
 
     <article
-        class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
+        class="lg:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"
     >
         {
             posts.map(
