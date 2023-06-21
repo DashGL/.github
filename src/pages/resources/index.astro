@@ -32,9 +32,9 @@ const posts = (await getCollection("resources")).sort(
                             date={post.data.pubDate}
                             image={post.data.heroImage}
                             url={`/resources/${post.slug}`}
-                            artistName={post.data.artistName}
-                            artistLink={post.data.artistLink}
-                            download={post.data.download}
+                            name={post.data.name}
+                            link={post.data.link}
+                            source={post.data.download}
                             type={post.data.tag as PostType}
                         />
                     )

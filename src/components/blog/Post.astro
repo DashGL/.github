@@ -1,22 +1,30 @@
 ---
-import Header from "./Header.astro";
-import Asset from "./Asset.astro";
-import type { PostType } from "../../consts";
+import Header from "../resources/Header.astro";
+import Source from "../resources/Source.astro";
+import { PostType } from "../../consts"
 
 export interface Props {
     title: string;
     description: string;
     date: Date;
-    image: string;
+    image?: string;
     url: string;
-    source: string;
-    name: string;
-    link: string;
-    type: PostType;
+    source?: string;
+    artistName?: string;
+    artistLink?: string;
+    download?: string;
+    type?: PostType;
 }
 
-const { title, description, date, image, url, source, name, link, type } =
-    Astro.props;
+const {
+    title,
+    description,
+    date = new Date(),
+    image = "https://placehold.co/600x400",
+    url,
+    source = undefined,
+    type= PostType.Blog
+} = Astro.props;
 ---
 
 <div
@@ -38,7 +46,7 @@ const { title, description, date, image, url, source, name, link, type } =
                 {description}
             </p>
 
-            <Asset type={type} name={name} url={link} source={source} />
+            {source && <Source url={source} />}
         </div>
     </div>
 

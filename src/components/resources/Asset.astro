@@ -1,12 +1,16 @@
 ---
 import Download from "../svg/Download.astro";
+import Github from "../svg/Github.astro";
+import { PostType } from "../../consts";
+
 export interface Props {
+    type: PostType;
     name: string;
     url: string;
-    download: string;
+    source: string;
 }
 
-const { name, url, download } = Astro.props;
+const { type, name, url, source } = Astro.props;
 ---
 
 <div
@@ -23,13 +27,31 @@ const { name, url, download } = Astro.props;
         </a>
     </span>
 
-    <a
-        href={download}
-        title=""
-        class="px-5 py-2.5 text-sm justify-center font-medium text-gray-900 inline-flex items-center focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-        role="button"
-    >
-        <Download />
-        Download
-    </a>
+    {
+        type === PostType.Asset && (
+            <a
+                href={source}
+                title=""
+                class="px-5 py-2.5 text-sm justify-center font-medium text-gray-900 inline-flex items-center focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                role="button"
+            >
+                <Download />
+                <span class="ms-2">Download</span>
+            </a>
+        )
+    }
+
+    {
+        type === PostType.Tool && (
+            <a
+                href={source}
+                title=""
+                class="px-5 py-2.5 text-sm justify-center font-medium text-gray-900 inline-flex items-center focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                role="button"
+            >
+                <Github />
+                <span class="ms-2">View on Github</span>
+            </a>
+        )
+    }
 </div>

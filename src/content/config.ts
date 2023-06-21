@@ -50,9 +50,9 @@ const resources = defineCollection({
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
     heroImage: z.string(),
-    artistName: z.string().optional(),
-    artistLink: z.string().optional(),
-    download: z.string().optional(),
+    name: z.string(),
+    link: z.string(),
+    download: z.string(),
   }),
 });
 
