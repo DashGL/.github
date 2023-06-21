@@ -5,7 +5,7 @@ download: https://github.com/scurest/apicula
 pubDate: June 21, 2023
 heroImage: /resources/frontispiece.png
 author: Kion
-slug: abebe
+slug: dmf/introduction
 tag: Tool
 name: scurest
 link: https://github.com/scurest

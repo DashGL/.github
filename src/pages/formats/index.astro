@@ -2,14 +2,14 @@
 import Container from "../../components/Container.astro";
 import Sidebar from "../../components/Sidebar.astro";
 import Article from "../../components/Article.astro";
-
 import TagList from "../../components/elements/TagList.astro";
 
 import { getCollection } from "astro:content";
-const posts = (await getCollection("format")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-console.log(posts);
+const posts = await getCollection("format");
+const post = posts.find((a) => a.slug === "dmf/introduction");
+
+const { title } = post!.data;
+const { Content } = await post!.render();
 ---
 
 <Container
@@ -27,16 +27,8 @@ console.log(posts);
     </Sidebar>
 
     <Article>
-        {
-            posts.map((post) => {
-                const folder = post.id.split('/').shift();
-                return (
-                    <li>
-                        <a href={`/formats/${post.slug}`}>{post.data.title}</a>
-                    </li>
-                );
-            })
-        }
+        <h1>{title}</h1>
+        <Content />
     </Article>
 </Container>
 
