@@ -2,11 +2,22 @@
 import Container from "../../components/Container.astro";
 import Sidebar from "../../components/Sidebar.astro";
 import Article from "../../components/Article.astro";
-import TagList from "../../components/elements/TagList.astro";
+import LinkList from "../../components/elements/LinkList.astro";
 
+import type { Link } from "../../consts";
 import { getCollection } from "astro:content";
-const posts = await getCollection("format");
-const post = posts.find((a) => a.slug === "dmf/introduction");
+const posts = (await getCollection("format")).sort((a, b) => {
+    return a.id < b.id ? -1 : 1;
+});
+const dmf: Link[] = posts.filter( p => p.id.includes("dmf")).map(p => {
+    return {
+        url: `/formats/${p.slug}`,
+        text: p.data.title
+    }
+});
+const post = posts[0];
+
+console.log(posts);
 
 const { title } = post!.data;
 const { Content } = await post!.render();
@@ -18,16 +29,13 @@ const { Content } = await post!.render();
     image="/banner/format.png"
 >
     <Sidebar>
-        <TagList
+        <LinkList
             title="Dash Model Format"
-            tags={["Summary", "Python", "Golang"]}
+            links={dmf}
         />
-        <TagList title="GLTF" tags={["Summary"]} />
-        <TagList title="Noesis" tags={["Summary"]} />
     </Sidebar>
 
     <Article>
-        <h1>{title}</h1>
         <Content />
     </Article>
 </Container>
