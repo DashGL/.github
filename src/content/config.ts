@@ -56,4 +56,24 @@ const resources = defineCollection({
   }),
 });
 
-export const collections = { blog, tutorials, resources };
+const format = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    tag: z.string(),
+    pubDate: z
+      .string()
+      .or(z.date())
+      .transform((val) => new Date(val)),
+    updatedDate: z
+      .string()
+      .optional()
+      .transform((str) => (str ? new Date(str) : undefined)),
+    heroImage: z.string(),
+    name: z.string(),
+    link: z.string(),
+    download: z.string(),
+  }),
+});
+
+export const collections = { blog, tutorials, resources, format };
