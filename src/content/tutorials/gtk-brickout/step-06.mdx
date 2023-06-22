@@ -1,24 +1,30 @@
 ---
-title: Draw a Triangle
-description: We initialize an OpenGL context in the window and draw a triangle
-pubDate: Sept. 24, 2017
-heroImage: /tuts/gtk-brick/bricks_002.png
-source: https://github.com/kion-dgl/DashGL-GTK-Brickout-Tutorial/tree/master/02_Draw_a_Triangle
+title: Draw a Ball
+description: We turn our triangle into a circle using
+pubDate: Sept. 28, 2017
+heroImage: /tuts/gtk-brick/bricks_006.png
+source: https://github.com/kion-dgl/DashGL-GTK-Brickout-Tutorial/tree/master/06_Draw_a_Ball
 ---
 
-The next step is a little long. We will simply more in the next step, but first we write a triangle by defining and compiling shaders directly in the source code.
+Next we'll change our triangle into a circle. Since we're drawing it at the origin, only a corner will appear in the bottem left of the screen. we'll position the ball in the next step. 
 
 `main.c`
+
 ```c
 #include <epoxy/gl.h>
 #include <epoxy/glx.h>
 #include <gtk/gtk.h>
+#include <math.h>
+#include "DashGL/dashgl.h"
+
+#define WIDTH 640.0f
+#define HEIGHT 480.0f
 
 static void on_realize(GtkGLArea *area);
 static void on_render(GtkGLArea *area, GdkGLContext *context);
 
 GLuint program;
-GLuint vao, vbo_triangle;
+GLuint vao, vbo_circle;
 GLint attribute_coord2d;
 
 int main(int argc, char *argv[]) {
@@ -69,7 +75,9 @@ static void on_realize(GtkGLArea *area) {
 
 	const GLubyte *renderer = glGetString(GL_RENDER);
 	const GLubyte *version = glGetString(GL_VERSION);
+	const GLubyte *shader = glGetString(GL_SHADING_LANGUAGE_VERSION);
 
+	printf("Shader %s\n", shader);
 	printf("Renderer: %s\n", renderer);
 	printf("OpenGL version supported %s\n", version);
 
@@ -78,70 +86,22 @@ static void on_realize(GtkGLArea *area) {
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
-	GLfloat triangle_vertices[] = {
-		 0.0,  0.8,
-		-0.8, -0.8,
-		 0.8, -0.8
-	};
+	int i;
+	float angle, nextAngle;
+	int num_segments = 100;
+
+	GLfloat circle_vertices[6 * 100];
 	
-	glGenBuffers(1, &vbo_triangle);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo_triangle);
-	glBufferData(
-		GL_ARRAY_BUFFER,
-		sizeof(triangle_vertices),
-		triangle_vertices,
-		GL_STATIC_DRAW
-	);
+	for(i = 0; i 
 
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 	glDisableVertexAttribArray(0);
 	
-	GLint compile_ok = GL_FALSE;
-	GLint link_ok = GL_FALSE;
+	const char *vs = "shader/vertex.glsl";
+	const char *fs = "shader/fragment.glsl";
 
-	const char *vs_source = 
-	"#version 120\n"
-	"attribute vec2 coord2d; \n"
-	"void main (void) {\n"
-	"	gl_Position = vec4(coord2d, 0.0, 1.0);\n"
-	"}";
-
-	const char *fs_source =
-	"#version 120\n"
-	"void main (void) {\n"
-	"	gl_FragColor[0] = 0.0;\n"
-	"	gl_FragColor[1] = 0.0;\n"
-	"	gl_FragColor[2] = 1.0;\n"
-	"}";
-
-	GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fs, 1, &fs_source, NULL);
-	glCompileShader(fs);
-	glGetShaderiv(fs, GL_COMPILE_STATUS, &compile_ok);
-	if(!compile_ok) {
-		fprintf(stderr, "Error in fragment shader\n");
-		return;
-	}
-
-	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vs, 1, &vs_source, NULL);
-	glCompileShader(vs);
-	glGetShaderiv(vs, GL_COMPILE_STATUS, &compile_ok);
-	if(!compile_ok) {
-		fprintf(stderr, "Error in vertex shader\n");
-		return;
-	}
-
-	program = glCreateProgram();
-	glAttachShader(program, vs);
-	glAttachShader(program, fs);
-	glLinkProgram(program);
-	glGetProgramiv(program, GL_LINK_STATUS, &link_ok);
-	if(!link_ok) {
-		fprintf(stderr, "Error when linking program\n");
-		return;
-	}
+	program = shader_load_program(vs, fs);
 
 	const char *attribute_name = "coord2d";
 	attribute_coord2d = glGetAttribLocation(program, attribute_name);
@@ -149,6 +109,21 @@ static void on_realize(GtkGLArea *area) {
 		fprintf(stderr, "Could not bind attribute %s\n", attribute_name);
 		return;
 	}
+
+	const char *uniform_name = "orthograph";
+	GLint uniform_ortho = glGetUniformLocation(program, uniform_name);
+	if(uniform_ortho == -1) {
+		fprintf(stderr, "Could not bind uniform %s\n", uniform_name);
+		return;
+	}
+	
+	glUseProgram(program);
+
+	mat4 orthograph;
+	mat4_orthagonal(WIDTH, HEIGHT, orthograph);
+
+	glUniformMatrix4fv(uniform_ortho, 1, GL_FALSE, orthograph);
+
 }
 
 static void on_render(GtkGLArea *area, GdkGLContext *context) {
@@ -157,12 +132,10 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glUseProgram(program);
-
 	glBindVertexArray(vao);
 	glEnableVertexAttribArray(attribute_coord2d);
 
-	glBindBuffer(GL_ARRAY_BUFFER, vbo_triangle);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo_circle);
 	glVertexAttribPointer(
 		attribute_coord2d,
 		2,
@@ -172,7 +145,7 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 		0
 	);
 
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 0, 3 * 100);
 	glDisableVertexAttribArray(attribute_coord2d);
 
 }
@@ -181,9 +154,13 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 ### Compile
 
 ```bash
-$ gcc `pkg-config --cflags gtk+-3.0` main.c `pkg-config --libs gtk+-3.0` -lepoxy
+$ gcc -c -o DashGL/dashgl.o DashGL/dashgl.c -lepoxy -lpng -lm
+$ gcc `pkg-config --cflags gtk+-3.0` main.c DashGL/dashgl.o `pkg-config --libs gtk+-3.0` \
+-lepoxy -lm -lpng
 ```
 
-```run
+### Run
+
+```bash
 $ ./a.out
 ```

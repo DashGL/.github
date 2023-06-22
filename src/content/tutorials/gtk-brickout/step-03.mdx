@@ -1,18 +1,25 @@
 ---
-title: Draw a Triangle
-description: We initialize an OpenGL context in the window and draw a triangle
+title: Separate Shaders
+description: Our shaders are included as strings, we want to separate them into files
 pubDate: Sept. 24, 2017
-heroImage: /tuts/gtk-brick/bricks_002.png
-source: https://github.com/kion-dgl/DashGL-GTK-Brickout-Tutorial/tree/master/02_Draw_a_Triangle
+heroImage: /tuts/gtk-brick/bricks_003.png
+source: https://github.com/kion-dgl/DashGL-GTK-Brickout-Tutorial/tree/master/03_Separate_Shaders
 ---
 
-The next step is a little long. We will simply more in the next step, but first we write a triangle by defining and compiling shaders directly in the source code.
+Now that we have tested that GTK and OpenGL works, we're going to move our shader files out of our source code into separate files. We're going to clone DashGL into our project folder for this. 
 
-`main.c`
+```bash
+$ git clone https://github.com/kion-dgl/DashGL-Library.git DashGL
+$ rm -rf DashGL/.git
+$ mkdir shader
+```
+
+Now we can simplify our `main.c`.
 ```c
 #include <epoxy/gl.h>
 #include <epoxy/glx.h>
 #include <gtk/gtk.h>
+#include "DashGL/dashgl.h"
 
 static void on_realize(GtkGLArea *area);
 static void on_render(GtkGLArea *area, GdkGLContext *context);
@@ -69,7 +76,9 @@ static void on_realize(GtkGLArea *area) {
 
 	const GLubyte *renderer = glGetString(GL_RENDER);
 	const GLubyte *version = glGetString(GL_VERSION);
+	const GLubyte *shader = glGetString(GL_SHADING_LANGUAGE_VERSION);
 
+	printf("Shader %s\n", shader);
 	printf("Renderer: %s\n", renderer);
 	printf("OpenGL version supported %s\n", version);
 
@@ -99,40 +108,10 @@ static void on_realize(GtkGLArea *area) {
 	
 	GLint compile_ok = GL_FALSE;
 	GLint link_ok = GL_FALSE;
-
-	const char *vs_source = 
-	"#version 120\n"
-	"attribute vec2 coord2d; \n"
-	"void main (void) {\n"
-	"	gl_Position = vec4(coord2d, 0.0, 1.0);\n"
-	"}";
-
-	const char *fs_source =
-	"#version 120\n"
-	"void main (void) {\n"
-	"	gl_FragColor[0] = 0.0;\n"
-	"	gl_FragColor[1] = 0.0;\n"
-	"	gl_FragColor[2] = 1.0;\n"
-	"}";
-
-	GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fs, 1, &fs_source, NULL);
-	glCompileShader(fs);
-	glGetShaderiv(fs, GL_COMPILE_STATUS, &compile_ok);
-	if(!compile_ok) {
-		fprintf(stderr, "Error in fragment shader\n");
-		return;
-	}
-
-	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vs, 1, &vs_source, NULL);
-	glCompileShader(vs);
-	glGetShaderiv(vs, GL_COMPILE_STATUS, &compile_ok);
-	if(!compile_ok) {
-		fprintf(stderr, "Error in vertex shader\n");
-		return;
-	}
-
+	
+	GLuint vs = shader_load_file("shader/vertex.glsl", GL_VERTEX_SHADER);
+	GLuint fs = shader_load_file("shader/fragment.glsl", GL_FRAGMENT_SHADER);
+	
 	program = glCreateProgram();
 	glAttachShader(program, vs);
 	glAttachShader(program, fs);
@@ -178,12 +157,45 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 }
 ```
 
+### Vertex Shader
+
+`shader/vertex.glsl`
+
+```c
+#version 120
+
+attribute vec2 coord2d;
+void main (void) {
+	gl_Position = vec4(coord2d, 0.0, 1.0);
+}
+```
+
+### Fragment Shader
+
+`shader/fragment.glsl`
+
+```c
+#version 120
+
+void main(void) {
+	
+	gl_FragColor[0] = 0.0;
+	gl_FragColor[1] = 0.0;
+	gl_FragColor[2] = 1.0;
+
+}
+```
+
 ### Compile
 
 ```bash
-$ gcc `pkg-config --cflags gtk+-3.0` main.c `pkg-config --libs gtk+-3.0` -lepoxy
+$ gcc -c -o DashGL/dashgl.o DashGL/dashgl.c -lepoxy -lpng -lm
+$ gcc `pkg-config --cflags gtk+-3.0` main.c DashGL/dashgl.o `pkg-config --libs gtk+-3.0` \
+-lepoxy -lm -lpng
 ```
 
-```run
+### Run
+
+```c
 $ ./a.out
 ```

@@ -1,12 +1,46 @@
 ---
-title: "Introduction"
-description: "Something Good"
-pubDate: "Jul 02 2022"
-heroImage: "https://gtk.dashgl.com/img/astroids_16.png"
+title: Open a Window
+description: Create a window with the GTK library to make sure we can compile and run something
+pubDate: Sept. 15, 2017
+heroImage: /tuts/gtk-brick/bricks_001.png
+source: https://github.com/kion-dgl/DashGL-GTK-Brickout-Tutorial/tree/master/01_Open_a_Window
 ---
 
-import Banner from "../../../components/elements/Banner.astro";
+First we make a quick 'Hello, World!' program. To make sure our environment is set up and working. 
 
-This tutorial covers how to make a Brickout Clone using the GTK+ library for a window context. OpenGL for rendering, and DashGL to manage matrix manipulation. We'll start off with something very simple, a very primitive clone of Brickout that doesn't use any sprites. We'll learn how to declare vertices and uniforms to draw basic objects on the screen and declare keydown callbacks to move entities on the screen. 
+```c
+#include <gtk/gtk.h>
 
-<Banner title="Brickout" description="Hello World" color="green" />
+int main(int argc, char *argv[]) {
+
+	GtkWidget *window;
+
+	gtk_init(&argc, &argv);
+
+	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+	gtk_window_set_title(GTK_WINDOW(window), "Brickout Tutorial");
+	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+	gtk_window_set_default_size(GTK_WINDOW(window), 640, 480);
+	gtk_window_set_type_hint(GTK_WINDOW(window), GDK_WINDOW_TYPE_HINT_UTILITY);
+	g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+	gtk_widget_show_all(window);
+
+	gtk_main();
+
+	return 0;
+
+}
+```
+
+### Compile:
+
+```bash
+$ gcc `pkg-config --cflags gtk+-3.0` main.c `pkg-config --libs gtk+-3.0`
+```
+
+### Run
+
+```bash
+$ ./a.out
+```
