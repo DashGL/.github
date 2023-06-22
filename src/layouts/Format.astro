@@ -1,0 +1,36 @@
+---
+import Container from "../components/Container.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Article from "../components/Article.astro";
+import LinkList from "../components/elements/LinkList.astro";
+
+import type { Link } from "../consts";
+import { getCollection } from "astro:content";
+const posts = (await getCollection("format")).sort((a, b) => {
+    return a.id < b.id ? -1 : 1;
+});
+
+const dmf: Link[] = posts.filter( p => p.id.includes("dmf")).map(p => {
+    return {
+        url: `/formats/${p.slug}`,
+        text: p.data.title
+    }
+});
+---
+
+<Container
+    title="Formats"
+    description="Documentation for working with interchange file formats"
+    image="/banner/format.png"
+>
+    <Sidebar>
+        <LinkList
+            title="Dash Model Format"
+            links={dmf}
+        />
+    </Sidebar>
+
+    <Article>
+        <slot />
+    </Article>
+</Container>

@@ -1,43 +1,22 @@
 ---
-import Container from "../../components/Container.astro";
-import Sidebar from "../../components/Sidebar.astro";
-import Article from "../../components/Article.astro";
-import LinkList from "../../components/elements/LinkList.astro";
+import Format from "../../layouts/Format.astro";
 
-import type { Link } from "../../consts";
 import { getCollection } from "astro:content";
-const posts = (await getCollection("format")).sort((a, b) => {
-    return a.id < b.id ? -1 : 1;
-});
-const dmf: Link[] = posts.filter( p => p.id.includes("dmf")).map(p => {
-    return {
-        url: `/formats/${p.slug}`,
-        text: p.data.title
-    }
-});
-const post = posts[0];
+export async function getStaticPaths() {
+    const posts = await getCollection("format");
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: post,
+    }));
+}
 
-console.log(posts);
+const post = (await getCollection("format")).find(
+    (post) => post.slug === "dmf/introduction"
+);
 
-const { title } = post!.data;
 const { Content } = await post!.render();
 ---
 
-<Container
-    title="Formats"
-    description="Documentation for working with interchange file formats"
-    image="/banner/format.png"
->
-    <Sidebar>
-        <LinkList
-            title="Dash Model Format"
-            links={dmf}
-        />
-    </Sidebar>
-
-    <Article>
-        <Content />
-    </Article>
-</Container>
-
-<script></script>
+<Format>
+    <Content />
+</Format>

@@ -1,11 +1,7 @@
 ---
-import Container from "../../components/Container.astro";
-import Sidebar from "../../components/Sidebar.astro";
-import Article from "../../components/Article.astro";
+import Format from '../../layouts/Format.astro';
 
 import { getCollection } from "astro:content";
-import TagList from "../../components/elements/TagList.astro";
-
 export async function getStaticPaths() {
 	const posts = await getCollection('format')
 	return posts.map((post) => ({
@@ -15,25 +11,9 @@ export async function getStaticPaths() {
 }
 
 const post = Astro.props;
-const { title } = post.data;
 const { Content } = await post.render();
 ---
 
-<Container
-    title="Formats"
-    description="Documentation for working with interchange file formats"
-    image="/banner/format.png"
->
-    <Sidebar>
-        <TagList
-            title="Dash Model Format"
-            tags={["Summary", "Python", "Golang"]}
-        />
-        <TagList title="GLTF" tags={["Summary"]} />
-        <TagList title="Noesis" tags={["Summary"]} />
-    </Sidebar>
-
-    <Article>
-        <Content/>
-    </Article>
-</Container>
+<Format>
+    <Content/>
+</Format>
