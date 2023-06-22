@@ -1,22 +1,21 @@
 ---
-import type { CollectionEntry } from "astro:content";
-
 import Container from "../components/Container.astro";
 import Sidebar from "../components/Sidebar.astro";
 import Article from "../components/Article.astro";
 import TagList from "../components/elements/TagList.astro";
 import SocialShare from "../components/tutorials/SocialShare.astro";
+import Pages from "../components/elements/Pages.astro";
 import FormattedDate from "../components/elements/FormattedDate.astro";
 
+import type { CollectionEntry } from "astro:content";
 type Props = CollectionEntry<"tutorials">["data"];
-
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <Container
-    title="Tutorials"
-    description="Tutorials for getting started with programming on Linux"
-    image="/banner/tutorials.png"
+	title="Tutorials"
+	description="Tutorials for getting started with programming on Linux"
+	image="/banner/tutorials.png"
 >
 	<Sidebar>
 		<TagList title="Tags" tags={["Hardware", "Musing", "Setup"]} />
@@ -31,7 +30,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 					{title}
 				</h1>
 				<p class="text-lg font-normal text-gray-500 dark:text-gray-400">
-					{ description }
+					{description}
 				</p>
 				<span
 					class="block mb-2 font-semibold text-gray-900 dark:text-white"
@@ -39,8 +38,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				</span>
 			</div>
 		</header>
+		<SocialShare />
 		<img src={heroImage} alt="" style="width: 100%; border-radius: 5px;" />
 		<slot class="format" />
-		<SocialShare />
+		<Pages/>
 	</Article>
 </Container>
