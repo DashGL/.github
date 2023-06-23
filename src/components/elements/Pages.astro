@@ -1,5 +1,4 @@
 ---
-const { text, url } = Astro.props;
 const { pathname } = Astro.url;
 import type { Link } from "../../consts";
 
@@ -31,12 +30,13 @@ for (let i = 0; i < links.length; i++) {
 }
 ---
 
-<div class="flex items-center justify-between">
+
+<div class="flex items-center justify-between flex-col mt-4 lg:flex-row lg:items-center py-6 border-t border-b border-gray-200 dark:border-gray-700">
     {
-        prev && (
+        prev ? (
             <a
                 href={prev.url}
-                class="inline-flex items-center px-4 py-2 mr-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                class="inline-flex items-center justify-center sm:w-1/3 lg:w-1/4 px-4 py-2 mr-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
                 <svg
                     aria-hidden="true"
@@ -53,14 +53,14 @@ for (let i = 0; i < links.length; i++) {
                 </svg>
                 Previous
             </a>
-        )
+        ) : <div/>
     }
-
+    
     {
-        next && (
+        next ? (
             <a
                 href={next.url}
-                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                class="inline-flex items-center justify-center sm:w-1/3 lg:w-1/4 px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
                 Next
                 <svg
@@ -77,6 +77,6 @@ for (let i = 0; i < links.length; i++) {
                     />
                 </svg>
             </a>
-        )
+        ) : <div/>
     }
 </div>

@@ -1,0 +1,52 @@
+---
+title: GTK Astroids
+description: Simple Astroids clone using assets from Kenney's Space Shooter Redux and Space Shooter Extension. The pace of this tutorial will be slightly faster than previous tutorials. As concepts that were introduced one at a time before will now be grouped into a single step. This tutorial will not be drastically different from the Invaders tutorial. We will mainly focus on movement, direction and acceleration. And how to draw the same sprite multiple times to create a wrapping effect.
+pubDate: Nov. 12, 2017
+heroImage: /tuts/gtk-ast/astroids_16.png
+source: https://github.com/kion-dgl/DashGL-GTK-Astroids-Tutorial
+---
+
+Simple Astroids clone using assets from [Kenney's Space Shooter Redux](http://kenney.nl/assets/space-shooter-redux) and [Space Shooter Extension](http://kenney.nl/assets/space-shooter-extension). The pace of this tutorial will be slightly faster than previous tutorials. As concepts that were introduced one at a time before will now be grouped into a single step. This tutorial will not be drastically different from the Invaders tutorial. We will mainly focus on movement, direction and acceleration. And how to draw the same sprite multiple times to create a wrapping effect.
+
+## Sprite Reference
+
+In this tutorial we will be using the following sprites from Kenney's Space Shooter pack. You are free to replace them with other colors or assets from the pack, or replace them with your own images.
+
+### Player
+
+![Player for DashGL Astroid Tutorial](/tuts/gtk-ast/player.png)
+
+### Bullet
+
+![Bullet for DashGL Astroid Tutorial](/tuts/gtk-ast/bullet.png)
+
+### Astroid
+
+![Astroid for DashGL Astroid Tutorial](/tuts/gtk-ast/astroid.png)
+
+### Gameover
+
+![Gameover for DashGL Astroid Tutorial](/tuts/gtk-ast/gameover.png)
+
+## Install Dependencies
+
+Run the following command to get the dependencies for this tutorial.
+
+### Debian / Ubuntu
+
+```bash
+$ sudo apt-get install libgtk-3-dev libegl1-mesa-dev libepoxy-dev libpng-dev git
+```
+
+### Fedora
+
+```bash
+$ sudo yum install epel-release
+$ sudo yum install gtk3-devel mesa-libGL-devel libepoxy-devel libpng-devel git
+```
+
+## Approach
+
+We will implement our project one step at a time. All of the source code will be displayed for the main.c file each step. Other files will only be displayed when they are created or changed. If you need to check for what the project folder looks like at any given step, you can follow the Github links on each page to view the file layout.
+
+If you have a specific coding style approach then feel free to use that. If you are new to programming, then this guide recomends separating each step into it's own folder, copying the previous folder each time. That will allow you to go back and double-check a working version in case something breaks.

@@ -1,24 +1,26 @@
 ---
 interface Props {
     title: string;
+    description: string;
     image: string;
     url: string;
+    active: boolean;
 }
 
-const { title, image, url } = Astro.props;
+const { title, image, url, description, active } = Astro.props;
 ---
 
-<div class="flex items-center pb-2">
+<div class={ !active ? "flex items-center p-4" : "flex items-center p-4 bg-gray-700/10 dark:bg-slate-100/10" }>
     <a href={ url } class="shrink-0">
         <img
             src={ image }
-            class="mr-4 w-20 max-w-full rounded"
+            class="mr-4 w-12 max-w-full rounded"
             alt="Image 1"
         />
     </a>
-    <a href="#">
+    <a href={ url }>
         <h5
-            class="font-semibold leading-tight text-gray-900 dark:text-white hover:underline"
+            class="font-semibold leading-tight text-gray-900 dark:text-slate-300 hover:underline"
         >
             { title }
         </h5>

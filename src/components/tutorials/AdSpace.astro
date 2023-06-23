@@ -22,7 +22,7 @@ const ads = [
     },
 ];
 
-const ad = ads[Math.floor(Math.random() * ads.length)]
+const ad = ads[Math.floor(Math.random() * ads.length)];
 
 const { url, image, text } = ad;
 ---
@@ -34,8 +34,13 @@ const { url, image, text } = ad;
 
     <a href={url}>
         <img src={image} class="rounded-xl" />
-        <p class="my-2 text-xs font-light text-gray-400 uppercase dark:text-gray-500">
-            {text}
+        <p class="mt-2 text-sm font-light text-gray-500 dark:text-gray-400">
+            { text }
+        </p>
+        <p
+            class="my-2 text-xs font-light text-gray-400 uppercase dark:text-gray-500"
+        >
+            Disclaimer: No Affiliation
         </p>
     </a>
 </div>

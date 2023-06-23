@@ -1,8 +1,7 @@
 ---
 import Container from "../components/Container.astro";
-import Sidebar from "../components/Sidebar.astro";
+import Sidebar from "../components/tutorials/Sidebar.astro";
 import Article from "../components/Article.astro";
-import TagList from "../components/elements/TagList.astro";
 import SocialShare from "../components/tutorials/SocialShare.astro";
 import Pages from "../components/elements/Pages.astro";
 import FormattedDate from "../components/elements/FormattedDate.astro";
@@ -17,10 +16,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	description="Tutorials for getting started with programming on Linux"
 	image="/banner/tutorials.png"
 >
-	<Sidebar>
-		<TagList title="Tags" tags={["Hardware", "Musing", "Setup"]} />
-	</Sidebar>
-
+	
+	<Sidebar/>
 	<Article>
 		<header class="py-2">
 			<div class="w-full max-w-screen-xl">
