@@ -16,8 +16,12 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	description="Tutorials for getting started with programming on Linux"
 	image="/banner/tutorials.png"
 >
-	
-	<Sidebar/>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.23.0/ace.js"
+		integrity="sha512-+jESSLfWnLFLB0xrEnlj3yESiiuuuOnVDcq+HXImWWCB5CBqAnVsmtIZ5GtrNMH0C6gPZoj6n14zJ0iwGYoswQ=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"></script>
+	<Sidebar />
 	<Article>
 		<header class="py-2">
 			<div class="w-full max-w-screen-xl">
@@ -38,6 +42,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<SocialShare />
 		<img src={heroImage} alt="" style="width: 100%; border-radius: 5px;" />
 		<slot class="format" />
-		<Pages/>
+		<Pages />
 	</Article>
+
+	
 </Container>

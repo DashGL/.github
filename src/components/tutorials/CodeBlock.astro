@@ -1,0 +1,33 @@
+---
+export interface Props {
+    filename: string;
+    code: string;
+}
+
+const { filename, code } = Astro.props;
+---
+
+<div
+    class="w-full mb-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+>
+    <div
+        class="p-2 flex flex-wrap font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800"
+    >
+        {filename}
+    </div>
+    <div id="defaultTabContent">
+        <div id="editor">{code}</div>
+    </div>
+</div>
+
+<script>
+    const editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/c_cpp");
+    editor.resize();
+    editor.setOptions({
+        maxLines: Infinity,
+        fontSize: "0.8em",
+    });
+    editor.setReadOnly(true);
+</script>

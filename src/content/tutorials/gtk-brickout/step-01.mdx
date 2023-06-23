@@ -6,32 +6,34 @@ heroImage: /tuts/gtk-brick/bricks_001.png
 source: https://github.com/kion-dgl/DashGL-GTK-Brickout-Tutorial/tree/master/01_Open_a_Window
 ---
 
-First we make a quick 'Hello, World!' program. To make sure our environment is set up and working. 
+import CodeBlock from "../../../components/tutorials/CodeBlock.astro";
 
-```c
-#include <gtk/gtk.h>
+First we make a quick `Hello, World!` program. To make sure our environment is set up and working.
 
-int main(int argc, char *argv[]) {
+<CodeBlock filename="main.c"
+	code={`#include <gtk/gtk.h>
 
-	GtkWidget *window;
+int main(int argc, char \*argv[]) {
 
-	gtk_init(&argc, &argv);
+    GtkWidget *window;
 
-	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_title(GTK_WINDOW(window), "Brickout Tutorial");
-	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
-	gtk_window_set_default_size(GTK_WINDOW(window), 640, 480);
-	gtk_window_set_type_hint(GTK_WINDOW(window), GDK_WINDOW_TYPE_HINT_UTILITY);
-	g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    gtk_init(&argc, &argv);
 
-	gtk_widget_show_all(window);
+    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(window), "Brickout Tutorial");
+    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+    gtk_window_set_default_size(GTK_WINDOW(window), 640, 480);
+    gtk_window_set_type_hint(GTK_WINDOW(window), GDK_WINDOW_TYPE_HINT_UTILITY);
+    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
-	gtk_main();
+    gtk_widget_show_all(window);
 
-	return 0;
+    gtk_main();
 
-}
-```
+    return 0;
+
+}`}
+/>
 
 ### Compile:
 
