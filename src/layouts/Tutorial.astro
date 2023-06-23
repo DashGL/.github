@@ -43,7 +43,22 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<img src={heroImage} alt="" style="width: 100%; border-radius: 5px;" />
 		<slot class="format" />
 		<Pages />
+		<script is:inline>
+			console.log('I am running!!!')
+			const elements = document.getElementsByClassName("code-block");
+			console.log(elements)
+			for (let i = 0; i < elements.length; i++) {
+				console.log(elements[i]);
+				const editor = ace.edit(elements[i]);
+				editor.setTheme("ace/theme/monokai");
+				editor.session.setMode("ace/mode/c_cpp");
+				editor.resize();
+				editor.setOptions({
+					maxLines: Infinity,
+					fontSize: "0.8em",
+				});
+				editor.setReadOnly(true);
+			}
+		</script>
 	</Article>
-
-	
 </Container>

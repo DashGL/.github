@@ -16,18 +16,6 @@ const { filename, code } = Astro.props;
         {filename}
     </div>
     <div id="defaultTabContent">
-        <div id="editor">{code}</div>
+        <div class="code-block">{code}</div>
     </div>
 </div>
-
-<script>
-    const editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
-    editor.session.setMode("ace/mode/c_cpp");
-    editor.resize();
-    editor.setOptions({
-        maxLines: Infinity,
-        fontSize: "0.8em",
-    });
-    editor.setReadOnly(true);
-</script>
