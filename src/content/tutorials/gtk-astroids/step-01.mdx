@@ -6,10 +6,13 @@ heroImage: /tuts/gtk-ast/astroids_01.png
 source: https://github.com/kion-dgl/DashGL-GTK-Astroids-Tutorial/tree/master/01_Open_a_Window
 ---
 
+import CodeBlock from "../../../components/tutorials/CodeBlock.astro";
+
 All of the tutorials start off the same. We open a window to make sure that the GTK libary is installed and working. 
 
-```c
-#include <gtk/gtk.h>
+<CodeBlock
+	filename="main.c"
+	code={`#include <gtk/gtk.h>
 
 int main(int argc, char *argv[]) {
 
@@ -30,8 +33,8 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 
-}
-```
+}`}
+/>
 
 ### Compile
 
