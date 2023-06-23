@@ -6,6 +6,8 @@ heroImage: /tuts/gtk-brick/bricks_003.png
 source: https://github.com/kion-dgl/DashGL-GTK-Brickout-Tutorial/tree/master/03_Separate_Shaders
 ---
 
+import CodeBlock from "../../../components/tutorials/CodeBlock.astro";
+
 Now that we have tested that GTK and OpenGL works, we're going to move our shader files out of our source code into separate files. We're going to clone DashGL into our project folder for this. 
 
 ```bash
@@ -15,8 +17,10 @@ $ mkdir shader
 ```
 
 Now we can simplify our `main.c`.
-```c
-#include <epoxy/gl.h>
+
+<CodeBlock
+	filename="main.c"
+	code={`#include <epoxy/gl.h>
 #include <epoxy/glx.h>
 #include <gtk/gtk.h>
 #include "DashGL/dashgl.h"
@@ -66,11 +70,11 @@ static void on_realize(GtkGLArea *area) {
 
 	// Debug Message
 
-	g_print("on realize\n");
+	g_print("on realize\\n");
 
 	gtk_gl_area_make_current(area);
 	if(gtk_gl_area_get_error(area) != NULL) {
-		fprintf(stderr, "Unknown error\n");
+		fprintf(stderr, "Unknown error\\n");
 		return;
 	}
 
@@ -78,9 +82,9 @@ static void on_realize(GtkGLArea *area) {
 	const GLubyte *version = glGetString(GL_VERSION);
 	const GLubyte *shader = glGetString(GL_SHADING_LANGUAGE_VERSION);
 
-	printf("Shader %s\n", shader);
-	printf("Renderer: %s\n", renderer);
-	printf("OpenGL version supported %s\n", version);
+	printf("Shader %s\\n", shader);
+	printf("Renderer: %s\\n", renderer);
+	printf("OpenGL version supported %s\\n", version);
 
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -118,21 +122,21 @@ static void on_realize(GtkGLArea *area) {
 	glLinkProgram(program);
 	glGetProgramiv(program, GL_LINK_STATUS, &link_ok);
 	if(!link_ok) {
-		fprintf(stderr, "Error when linking program\n");
+		fprintf(stderr, "Error when linking program\\n");
 		return;
 	}
 
 	const char *attribute_name = "coord2d";
 	attribute_coord2d = glGetAttribLocation(program, attribute_name);
 	if(attribute_coord2d == -1) {
-		fprintf(stderr, "Could not bind attribute %s\n", attribute_name);
+		fprintf(stderr, "Could not bind attribute %s\\n", attribute_name);
 		return;
 	}
 }
 
 static void on_render(GtkGLArea *area, GdkGLContext *context) {
 
-	g_print("on render\n");
+	g_print("on render\\n");
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -154,28 +158,27 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDisableVertexAttribArray(attribute_coord2d);
 
-}
-```
+}`}
+/>
+
 
 ### Vertex Shader
 
-`shader/vertex.glsl`
-
-```c
-#version 120
+<CodeBlock
+	filename="shader/vertex.glsl"
+	code={`#version 120
 
 attribute vec2 coord2d;
 void main (void) {
 	gl_Position = vec4(coord2d, 0.0, 1.0);
-}
-```
+}`} 
+/>
 
 ### Fragment Shader
 
-`shader/fragment.glsl`
-
-```c
-#version 120
+<CodeBlock
+	filename="shader/fragment.glsl"
+	code={`#version 120
 
 void main(void) {
 	
@@ -183,8 +186,9 @@ void main(void) {
 	gl_FragColor[1] = 0.0;
 	gl_FragColor[2] = 1.0;
 
-}
-```
+}`} 
+/>
+
 
 ### Compile
 
