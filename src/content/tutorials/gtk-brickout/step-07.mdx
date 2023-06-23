@@ -12,10 +12,9 @@ A common technique that you will become familiar with in OpenGL is having your a
 
 ### Vertex Shader
 
-`shader/vertex.glsl`
-
-```c
-#version 120
+<CodeBlock
+	filename="shader/vertex.glsl"
+	code={`#version 120
 
 uniform mat4 mvp;
 uniform mat4 orthograph;
@@ -26,17 +25,17 @@ void main (void) {
 	vec4 pixel_pos = mvp * vec4(coord2d, 0.0, 1.0);
 	gl_Position = orthograph * pixel_pos;
 
-}
-```
+}`}
+/>
 
 ### Main Program
 
 Next we'll add the mvp matrix into our main program. 
- 
-`main.c`
 
-```c
-#include <epoxy/gl.h>
+
+<CodeBlock
+	filename="main.c"
+	code={`#include <epoxy/gl.h>
 #include <epoxy/glx.h>
 #include <gtk/gtk.h>
 #include <math.h>
@@ -146,12 +145,12 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 	glDrawArrays(GL_TRIANGLES, 0, 3 * 100);
 	glDisableVertexAttribArray(attribute_coord2d);
 
-}
-```
+}`}
+/>
 
 ### Compile
 
-```c
+```bash
 $ gcc -c -o DashGL/dashgl.o DashGL/dashgl.c -lepoxy -lpng -lm
 $ gcc `pkg-config --cflags gtk+-3.0` main.c DashGL/dashgl.o `pkg-config --libs gtk+-3.0` \
 -lepoxy -lm -lpng
@@ -159,6 +158,6 @@ $ gcc `pkg-config --cflags gtk+-3.0` main.c DashGL/dashgl.o `pkg-config --libs g
 
 ### Run
 
-```c
+```bash
 $ ./a.out
 ```

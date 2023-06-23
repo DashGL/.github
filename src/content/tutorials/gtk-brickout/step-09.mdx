@@ -10,10 +10,9 @@ import CodeBlock from "../../../components/tutorials/CodeBlock.astro";
 
 Now that we have a base to work with, we can make something that starts to look like Brickout. In this step we bounce our ball around the screen. 
 
-`main.c`
-
-```c
-#include <epoxy/gl.h>
+<CodeBlock
+	filename="main.c"
+	code={`#include <epoxy/gl.h>
 #include <epoxy/glx.h>
 #include <gtk/gtk.h>
 #include <math.h>
@@ -154,8 +153,9 @@ static gboolean on_idle(gpointer data) {
 	gtk_widget_queue_draw(GTK_WIDGET(data));
 	return TRUE;
 
-}
-```
+}`}
+/>
+
 
 ### Compile
 

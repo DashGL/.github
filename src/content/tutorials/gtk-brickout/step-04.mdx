@@ -10,10 +10,9 @@ import CodeBlock from "../../../components/tutorials/CodeBlock.astro";
 
 In this step we continue to simply further by compiling and linking our shader program directly through DashGL. 
  
-`main.c`
-
-```c
-#include <epoxy/gl.h>
+<CodeBlock
+	filename="main.c"
+	code={`#include <epoxy/gl.h>
 #include <epoxy/glx.h>
 #include <gtk/gtk.h>
 #include "DashGL/dashgl.h"
@@ -140,8 +139,8 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDisableVertexAttribArray(attribute_coord2d);
 
-}
-```
+}`}
+>
 
 ### Compile
 

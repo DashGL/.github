@@ -20,18 +20,17 @@ I suppose the idea is that OpenGL doesn't try to assume what the end user wants 
 
 To do this, we're going to edit our vertex shader to look like this.
 
-`shader/vertex.glsl`
-
-```c
-#version 120
+<CodeBlock
+	filename="shader/vertex.glsl"
+	code={`#version 120
 
 uniform mat4 orthograph;
 attribute vec2 coord2d;
 
 void main (void) {
 	gl_Position = orthograph * vec4(coord2d, 0.0, 1.0);
-}
-```
+}`}
+/>
 
 We add a new variable a uniform, which gets set once and stays the same until we redefine it, as opposed to an attribute which are variables that are fed into our shader. In this case we will define a 4x4 matrix to convert our pixel coordinates back into standard coordinates. 
 
@@ -39,10 +38,9 @@ We add a new variable a uniform, which gets set once and stays the same until we
 
 So next we need to edit our main file to define our orthographic matrix and pass the value into our shader program. 
 
-`main.c`
-
-```c
-#include <epoxy/gl.h>
+<CodeBlock
+	filename="main.c"
+	code={`#include <epoxy/gl.h>
 #include <epoxy/glx.h>
 #include <gtk/gtk.h>
 #include "DashGL/dashgl.h"
@@ -186,8 +184,9 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDisableVertexAttribArray(attribute_coord2d);
 
-}
-```
+}`}
+/>
+
 
 ### Compile
 
