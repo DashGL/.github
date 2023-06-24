@@ -7,3 +7,43 @@ source: https://github.com/kion-dgl/DashGL-GTK-Invaders-Tutorial/tree/master/01_
 ---
 
 import CodeBlock from "../../../components/tutorials/CodeBlock.astro";
+
+First of all, we want to make sure that our GTK library is installed and working. So we start off opening a window. 
+
+<CodeBlock
+    filename="main.c"
+    code={`#include <gtk/gtk.h>
+
+int main(int argc, char *argv[]) {
+
+    GtkWidget *window;
+
+    gtk_init(&argc, &argv);
+
+    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(window), "Invaders Tutorial");
+    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+    gtk_window_set_default_size(GTK_WINDOW(window), 640, 480);
+    gtk_window_set_type_hint(GTK_WINDOW(window), GDK_WINDOW_TYPE_HINT_UTILITY);
+    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+    gtk_widget_show_all(window);
+
+    gtk_main();
+
+    return 0;
+
+}`}
+/>
+
+### Compile
+
+```bash
+$ gcc `pkg-config --cflags gtk+-3.0` main.c `pkg-config --libs gtk+-3.0`
+```
+
+### Run 
+
+```bash
+$ ./a.out
+```
