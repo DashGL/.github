@@ -1,0 +1,65 @@
+---
+title: Introduction
+description: Gtk Invaders
+pubDate: Oct. 8, 2017
+heroImage: /img/tutorial-3.jpg
+source: https://github.com/kion-dgl/DashGL-GTK-Invaders-Tutorial
+---
+
+Simple Invaders clone using [Kenney's Space Shooter redux pack](https://kenney.nl/assets/space-shooter-redux). 
+In this tutorial we will include sprites to make a more complete looking game, 
+but it will still be fairly simple in nature. We have a group of enemies that 
+fire at the player while moving down the screen and a player that can fire back. 
+We use static arrays to create a very simple bullet management system. And use 
+the pythagorean theorem for basic hit detection. 
+
+### Sprite Reference
+
+In this tutorial we will be using the following sprites from Kenney's Space Shooter pack. You are free to replace them with other colors or assets from the pack, or replace them with your own images. 
+
+### Player
+
+![Player for DashGL Invader Tutorial](/tuts/gtk-inv/playerShip1_red.png)
+
+### Player Bullet
+
+![Bullet for DashGL Invader Tutorial](/tuts/gtk-inv/laserRed06.png)
+
+### Enemy
+
+![Enemy for DashGL Invader Tutorial](/tuts/gtk-inv/enemyBlue1.png)
+
+### Enemy Bullet
+
+![Enemy Bullet for DashGL Invader Tutorial](/tuts/gtk-inv/laserBlue08.png)
+
+### Background
+
+![Background for DashGL Invader Tutorial](/tuts/gtk-inv/blue.png)
+
+### Gameover
+
+![Gameover for DashGL Invader Tutorial](/tuts/gtk-inv/gameover.png)
+
+## Install Dependencies
+
+Run the following command to get the dependencies for this tutorial. 
+
+### Debian / Ubuntu 
+
+```bash
+$ sudo apt-get install libgtk-3-dev libegl1-mesa-dev libepoxy-dev libpng-dev git
+```
+
+### Fedora / Red Hat
+
+```bash
+$ sudo yum install epel-release
+$ sudo yum install gtk3-devel mesa-libGL-devel libepoxy-devel libpng-devel git
+```
+
+## Approach
+
+We will implement our project one step at a time. All of the source code will be displayed for the main.c file each step. Other files will only be displayed when they are created or changed. If you need to check for what the project folder looks like at any given step, you can follow the Github links on each page to view the file layout. 
+
+If you have a specific coding style approach then feel free to use that. If you are new to programming, then this guide recomends separating each step into it's own folder, copying the previous folder each time. That will allow you to go back and double-check a working version in case something breaks. 
