@@ -94,11 +94,11 @@ static void on_realize(GtkGLArea *area) {
 
 	// Debug Message
 
-	g_print("on realize\n");
+	g_print("on realize\\n");
 
 	gtk_gl_area_make_current(area);
 	if(gtk_gl_area_get_error(area) != NULL) {
-		fprintf(stderr, "Unknown error\n");
+		fprintf(stderr, "Unknown error\\n");
 		return;
 	}
 	
@@ -106,9 +106,9 @@ static void on_realize(GtkGLArea *area) {
 	const GLubyte *version = glGetString(GL_VERSION);
 	const GLubyte *shader = glGetString(GL_SHADING_LANGUAGE_VERSION);
 
-	printf("Shader %s\n", shader);
-	printf("Renderer: %s\n", renderer);
-	printf("OpenGL version supported %s\n", version);
+	printf("Shader %s\\n", shader);
+	printf("Renderer: %s\\n", renderer);
+	printf("OpenGL version supported %s\\n", version);
 
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -176,28 +176,28 @@ static void on_realize(GtkGLArea *area) {
 	const char *attribute_name = "coord2d";
 	attribute_coord2d = glGetAttribLocation(program, attribute_name);
 	if(attribute_coord2d == -1) {
-		fprintf(stderr, "Could not bind attribute %s\n", attribute_name);
+		fprintf(stderr, "Could not bind attribute %s\\n", attribute_name);
 		return;
 	}
 
 	const char *uniform_name = "orthograph";
 	GLint uniform_ortho = glGetUniformLocation(program, uniform_name);
 	if(uniform_ortho == -1) {
-		fprintf(stderr, "Could not bind uniform %s\n", uniform_name);
+		fprintf(stderr, "Could not bind uniform %s\\n", uniform_name);
 		return;
 	}
 	
 	uniform_name = "mvp";
 	uniform_mvp = glGetUniformLocation(program, uniform_name);
 	if(uniform_mvp == -1) {
-		fprintf(stderr, "Could not bind uniform %s\n", uniform_name);
+		fprintf(stderr, "Could not bind uniform %s\\n", uniform_name);
 		return;
 	}
 
 	uniform_name = "color";
 	uniform_color = glGetUniformLocation(program, uniform_name);
 	if(uniform_color == -1) {
-		fprintf(stderr, "Could not bind uniform %s\n", uniform_name);
+		fprintf(stderr, "Could not bind uniform %s\\n", uniform_name);
 		return;
 	}
 

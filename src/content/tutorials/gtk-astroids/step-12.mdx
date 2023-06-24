@@ -5,3 +5,45 @@ pubDate: Nov. 14, 2017
 heroImage: /tuts/gtk-ast/astroids_12.png
 source: https://github.com/kion-dgl/DashGL-GTK-Astroids-Tutorial/tree/master/12_Fragment_Shader
 ---
+
+import CodeBlock from "../../../components/tutorials/CodeBlock.astro";
+
+If you noticed any problems with black being drawn on top of sprites, that is because transparent fragments aren't being discarded. This step is just a quick change to the fragment shader to fix this problem. 
+
+<CodeBlock
+    filename="shader/fragment.glsl"
+    code={`#version 120
+
+varying vec2 texcoord;
+uniform sampler2D mytexture;
+
+void main(void) {
+
+    vec2 flipped_texcoord = vec2(texcoord.x, 1.0 - texcoord.y);
+    vec4 frag = texture2D(mytexture, flipped_texcoord);
+    
+    if(frag.z == 0) {
+        discard;
+    }
+    
+    gl_FragColor = frag;
+
+}
+`}
+/>
+
+### Compile
+
+Since our shader code is compiled by our program, there's no need to recompile. But just to have as a reference, compile command is below.
+
+```bash
+$ gcc -c -o DashGL/dashgl.o DashGL/dashgl.c -lepoxy -lpng -lm
+$ gcc `pkg-config --cflags gtk+-3.0` main.c DashGL/dashgl.o `pkg-config --libs gtk+-3.0` \
+-lepoxy -lm -lpng
+```
+
+### Run
+
+```bash
+$ ./a.out
+```

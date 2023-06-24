@@ -90,11 +90,11 @@ static void on_realize(GtkGLArea *area) {
 
 	// Debug Message
 
-	g_print("on realize\n");
+	g_print("on realize\\n");
 
 	gtk_gl_area_make_current(area);
 	if(gtk_gl_area_get_error(area) != NULL) {
-		fprintf(stderr, "Unknown error\n");
+		fprintf(stderr, "Unknown error\\n");
 		return;
 	}
 
@@ -102,9 +102,9 @@ static void on_realize(GtkGLArea *area) {
 	const GLubyte *version = glGetString(GL_VERSION);
 	const GLubyte *shader = glGetString(GL_SHADING_LANGUAGE_VERSION);
 
-	printf("Shader %s\n", shader);
-	printf("Renderer: %s\n", renderer);
-	printf("OpenGL version supported %s\n", version);
+	printf("Shader %s\\n", shader);
+	printf("Renderer: %s\\n", renderer);
+	printf("OpenGL version supported %s\\n", version);
 
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
