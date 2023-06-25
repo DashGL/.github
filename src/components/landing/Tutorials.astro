@@ -1,5 +1,10 @@
 ---
 import TutorialCard from "../elements/TutorialCard.astro";
+
+import { getCollection } from "astro:content";
+const posts = (await getCollection("tutorials"))
+    .filter((a) => a.id.indexOf("index") !== -1)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).splice(0, 3)
 ---
 
 <section class="bg-white dark:bg-gray-900">
@@ -18,26 +23,16 @@ import TutorialCard from "../elements/TutorialCard.astro";
             </p>
         </div>
         <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-            <TutorialCard
-                title="Brickout"
-                description="Simple Brickout clone that only uses basic geometry to get started."
-                image="/img/tutorial-1.jpg"
-            />
-            <TutorialCard
-                image="/img/tutorial-2.jpg"
-                title="Astroids"
-                description="Astroids as a method to introduce sprites and gameover screen."
-            />
-            <TutorialCard
-                image="/img/tutorial-3.jpg"
-                title="Invaders"
-                description="Invaders clone which introduce simple behavior and explosion"
-            />
-            <TutorialCard
-                image="/img/tutorial-1.jpg"
-                title="Simple Model"
-                description="Start with a simple triangle end with a rendered model"
-            />
+            {
+                posts.map((post) => (
+                    <TutorialCard
+                        title={post.data.title}
+                        description={post.data.description}
+                        image={post.data.heroImage}
+                        url={`/tutorials/${post.slug}`}
+                    />
+                ))
+            }
         </div>
     </div>
 </section>
