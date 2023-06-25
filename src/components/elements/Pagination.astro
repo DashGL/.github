@@ -1,3 +1,12 @@
+---
+export interface Props {
+    page: number;
+    length: number;
+}
+
+const { page, length } = Astro.props;
+---
+
 <div class="mt-5 flex flex-col items-center">
     <!-- Help text -->
     <span class="text-sm text-gray-700 dark:text-gray-400">
@@ -5,6 +14,16 @@
             >1</span
         > to <span class="font-semibold text-gray-900 dark:text-white">10</span>
         of <span class="font-semibold text-gray-900 dark:text-white">100</span> Entries
+    </span>
+
+    <span class="text-sm text-gray-700 dark:text-gray-400">
+        Current Page
+        <span class="font-semibold text-gray-900 dark:text-white">{ page }</span>
+    </span>
+
+    <span class="text-sm text-gray-700 dark:text-gray-400">
+        Length
+        <span class="font-semibold text-gray-900 dark:text-white">{ length }</span>
     </span>
 
     <nav aria-label="Page navigation example">
@@ -18,21 +37,21 @@
             </li>
             <li>
                 <a
-                    href="#"
+                    href="/blog"
                     class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                     >1</a
                 >
             </li>
             <li>
                 <a
-                    href="#"
+                    href="/blog?page=1"
                     class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                     >2</a
                 >
             </li>
             <li>
                 <a
-                    href="#"
+                    href="/blog?page=2"
                     aria-current="page"
                     class="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
                     >3</a
@@ -40,21 +59,21 @@
             </li>
             <li>
                 <a
-                    href="#"
+                    href="/blog?page=3"
                     class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                     >4</a
                 >
             </li>
             <li>
                 <a
-                    href="#"
+                    href="/blog?page=4"
                     class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                     >5</a
                 >
             </li>
             <li>
                 <a
-                    href="#"
+                    href="/blog?page=5"
                     class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                     >Next</a
                 >
