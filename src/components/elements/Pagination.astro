@@ -1,15 +1,93 @@
 ---
 export interface Props {
     page: number;
-    length: number;
     total: number;
     start: number;
     end: number;
     prev: string;
     next: string;
+    lastPage: number;
 }
 
-const { next, prev, total, start, end, page, length } = Astro.props;
+const { next, prev, total, start, end, page, lastPage } = Astro.props;
+
+type Page = {
+    index: number;
+    url: string;
+    active: boolean;
+};
+
+const pages: (Page | null)[] = [];
+
+if (page < 5) {
+    for (let i = 0; i < 5; i++) {
+        pages.push({
+            index: i + 1,
+            url: `/blog/${i + 1}`,
+            active: i + 1 === page,
+        });
+    }
+    pages.push(null);
+
+    pages.push({
+        index: lastPage - 1,
+        url: `/blog/${lastPage - 1}`,
+        active: false,
+    });
+
+    pages.push({
+        index: lastPage,
+        url: `/blog/${lastPage}`,
+        active: false,
+    });
+} else if (page > lastPage - 4) {
+    pages.push({
+        index: 1,
+        url: `/blog/1`,
+        active: false,
+    });
+
+    pages.push({
+        index: 2,
+        url: `/blog/2`,
+        active: false,
+    });
+
+    pages.push(null);
+
+    for (let i = lastPage - 4; i < lastPage; i++) {
+        pages.push({
+            index: i + 1,
+            url: `/blog/${i + 1}`,
+            active: i + 1 === page,
+        });
+    }
+} else {
+
+    pages.push({
+        index: 1,
+        url: `/blog/1`,
+        active: false,
+    });
+
+    pages.push(null);
+
+    for (let i = page - 2; i <= page + 1; i++) {
+        pages.push({
+            index: i + 1,
+            url: `/blog/${i + 1}`,
+            active: i + 1 === page,
+        });
+    }
+
+    pages.push(null);
+
+    pages.push({
+        index: lastPage,
+        url: `/blog/${lastPage}`,
+        active: false,
+    });
+}
 ---
 
 <div
@@ -38,7 +116,8 @@ const { next, prev, total, start, end, page, length } = Astro.props;
             <!-- Help text -->
             <span class="text-sm text-gray-700 dark:text-gray-400">
                 Showing <span
-                    class="font-semibold text-gray-900 dark:text-white">{start}</span
+                    class="font-semibold text-gray-900 dark:text-white"
+                    >{start}</span
                 > to <span class="font-semibold text-gray-900 dark:text-white"
                     >{end}</span
                 > of <span class="font-semibold text-gray-900 dark:text-white"
@@ -68,42 +147,35 @@ const { next, prev, total, start, end, page, length } = Astro.props;
                             clip-rule="evenodd"></path>
                     </svg>
                 </a>
-                <!-- Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" -->
-                <a
-                    href="#"
-                    aria-current="page"
-                    class="px-5 py-2 leading-tight text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-                    >1</a
-                >
-                <a
-                    href="#"
-                    class="px-5 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >2</a
-                >
-                <a
-                    href="#"
-                    class="px-5 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >3</a
-                >
-                <span
-                    class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0"
-                    >...</span
-                >
-                <a
-                    href="#"
-                    class="px-5 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >8</a
-                >
-                <a
-                    href="#"
-                    class="px-5 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >9</a
-                >
-                <a
-                    href="#"
-                    class="px-5 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >10</a
-                >
+
+                {
+                    pages.map((p) => {
+                        if (!p) {
+                            return (
+                                <span class="px-5 py-2 leading-tight text-gray-500 bg-white border border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                    ...
+                                </span>
+                            );
+                        }
+                        return p.active ? (
+                            <a
+                                href={p.url}
+                                aria-current="page"
+                                class="px-5 py-2 leading-tight text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+                            >
+                                {p.index}
+                            </a>
+                        ) : (
+                            <a
+                                href={p.url}
+                                class="px-5 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                            >
+                                {p.index}
+                            </a>
+                        );
+                    })
+                }
+
                 <a
                     href={next}
                     class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"

@@ -45,10 +45,10 @@ const { page } = Astro.props;
             next={page.url.next}
             prev={page.url.prev}
             page={page.currentPage}
-            length={page.lastPage}
             start={page.start}
             end={page.end}
             total={page.total}
+            lastPage={page.lastPage}
         />
     </Article>
 </Container>
