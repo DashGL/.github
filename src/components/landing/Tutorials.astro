@@ -4,7 +4,7 @@ import TutorialCard from "../elements/TutorialCard.astro";
 import { getCollection } from "astro:content";
 const posts = (await getCollection("tutorials"))
     .filter((a) => a.id.indexOf("index") !== -1)
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).splice(0, 3)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).splice(0, 4)
 ---
 
 <section class="bg-white dark:bg-gray-900">
