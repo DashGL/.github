@@ -1,9 +1,152 @@
 ---
-title: Multiple Shapes
+title: Fade In and Out
 description: Rendering a 3D Model from the Terminal without a window manager.
 pubDate: June 8, 2020
-heroImage: /tuts/egl-mod/step-06.png
-source: https://gitlab.com/dashgl/dashie/-/tree/master/05_multiple
+heroImage: /tuts/egl-mod/step-07.png
+source: https://gitlab.com/dashgl/dashie/-/tree/master/06_fade
 ---
 
 import CodeBlock from "../../../components/tutorials/CodeBlock.astro";
+import Video from "../../../components/tutorials/Video.astro";
+
+In this article we take the step where we start to make changes during runtime. 
+Up to now we've only drawn static images that don't change, so in this article we draw a triangle to the screen that fades in and out. 
+The way we accomplish this is by using uniforms which are a specific value that can be changed by the CPU-side of code, 
+and updated in the GPU-memory as needed.
+
+<Video src="/tuts/egl-mod/tri-fade.mp4"/>
+
+In this artcile, we will work on a triangle that fades in and out. 
+Up until now we've only been displaying static images, that might have well been rendered to an 
+image file instead of being run in a program. In this example we will be updating the alpha value 
+of the triangle for every frame that is drawn in order to create an effect that is dependent on time. 
+In order to do this we will be using a `uniform` variable type in our shader. 
+
+A `uniform` variable is a variable that will get set a value and retain that value until the next time it is updated. 
+This is different from the `attribute` types we are using, which are more like slots that get filled with a value from a buffer. 
+In this example we will be using the cpu to calculate how long the program has been running, and put that value to manage an 
+aplha variable whose value ranges between 0 and 1. Let's go ahead and look at our shaders, and then our `init_shaders` 
+function to see how we will approach this article. 
+
+<CodeBlock
+    filename="shaders/vertex.glsl"
+    code={`attribute vec2 coord2d;
+attribute vec3 v_color;
+varying vec3 f_color;
+
+void main(void) {
+	gl_Position = vec4(coord2d, 0.0, 1.0);
+	f_color = v_color;
+}`}
+/>
+
+We are using the same vertex shader as from the previous article. 
+We have a `vec2 coord2d` for the position of the triangles and a `vec3 v_color attribute` that we use to set the 
+`varying vec3 f_color attribute` to be passed into the fragment shader. 
+
+<CodeBlock
+    filenmae="shaders/fragment.glsl"
+    code={`uniform float fade;
+varying vec3 f_color;
+
+void main(void) {
+	gl_FragColor = vec4(f_color, fade);
+}`}
+/>
+
+As for the fragment shader we have a new addition. 
+From the previous article we have the same expression for setting the pixel color from vertex color with 
+`varying vec3 f_color` and `gl_FragColor = vec4(f_color, fade)`. 
+The difference is that we have a new fade variable that it a `uniform float` type. 
+Basically a `uniform` value is a value that once it's set, it will retain that value until updated again. 
+In that case we're using fade as a value for the alpha, so if we set it to 0.5, 
+the triangle will be drawn at half opacity until the value is updated again. 
+
+Let's then look at the `init_buffers` function to see how we get the reference to the shader. 
+
+<CodeBlock
+    filename="main.c"
+    code={`static void init_buffers(GLOBAL_T *state) {
+
+	...
+
+	const char *uniform_name = "fade";
+	state->uniform_fade = glGetUniformLocation(state->program, uniform_name);
+	if(state->uniform_fade == -1) {
+		fprintf(stderr, "Could not bind uniform %s\n", uniform_name);
+		return;
+	}
+
+	...
+
+}`}
+/>
+
+Not suprisingly we get the reference to the `uniform` variable like we do with the other attributes, so not to much new there. 
+The only difference is we call the function `glGetUniformLocation` instead of `glGetAttribLocation`. 
+Last, let's take a look at how we draw the triangles. 
+
+<CodeBlock
+    filename="main.c"
+    code={`static void draw_triangles(GLOBAL_T *state) {
+	
+	glBindFramebuffer(GL_FRAMEBUFFER,0);
+	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+
+	glBindBuffer(GL_ARRAY_BUFFER, state->triangle);
+	glUseProgram ( state->program );
+
+	state->fade += state->fade_dx;
+	if(state->fade <= 0.0f) {
+		state->fade = 0.0f;
+ 		state->fade_dx *= -1.0f;
+	} else if(state->fade >= 1.0f) {
+ 		state->fade = 1.0f;
+ 		state->fade_dx *= -1.0f;
+	}
+
+    glUniform1f(state->uniform_fade, state->fade);
+
+	glVertexAttribPointer(
+		state->attr_coord,
+		2,
+		GL_FLOAT,
+		GL_FALSE,
+		sizeof(float) * 5,
+		0
+	);
+
+	glVertexAttribPointer(
+		state->attr_color,
+		3,
+		GL_FLOAT,
+		GL_FALSE,
+		sizeof(float) * 5,
+		(void*)(sizeof(float) * 2)
+	);
+
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+	
+	glFlush();
+	glFinish();
+
+}`}
+/>
+
+In the `main` function we call the `draw_triangles` function in a for-loop. 
+This means that effectively the function is being called every few milliseconds. 
+Normally this would be called at 30 frames per second, or 60 frames per seconds, 
+but I don't know how to limit the speed for a consistent framerame, or how to sync up with the refresh rate.
+I think the function is being called as soon as it completes. 
+Though that just means that we adjust the rate of the fade so that it looks decent. 
+
+If we were cool kids then we might try using a sin curve to adjust the opacity of the triangle. 
+But to be lazy we can simply increment the opacity by either decreasing it a little bit (ex. 0.01) each frame, 
+or increasing it by a little bit. Which is what we do with this following bit of code. If the opacity becomes less than or equal to zero, 
+then we specifically set the opacity value to zero and multiply the increment value by negative one to start adding. 
+And likewise once we get to 1.0 opacity, we multiply the increment value by negative one to start decreasing the opacity. 
+And then last we call `glUniform1f(state->uniform_fade, state->fade)` to update the value in the shader. 
+
+## Review 
+
+You might be wondering about the elephant in the room that is the source code that appears in the background behind the triangle when it's faded. And to be honest I'm nto entirely sure how to fix this. If you remember back from the first article where we created a surface to draw on. The reason for the console text appearing is probably because the opacity of the triangle ends up showing the surface under it, which is the surface that shows the console. It's not intentional, but I think it's a pretty cool effect which is why I left it in there. In terms of approach for fixes, I think there is an option to discard lower layers, or maybe there's the more boring approach of drawing a black square before drawing the triangle. In the next article we will start moving our triangle around. 
