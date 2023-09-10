@@ -2,14 +2,12 @@
 title: Updates for September 2023
 description: Status Report on Trying not to be a low-life loser
 pubDate: Sept. 10, 2023
-heroImage: 
+heroImage: https://github.com/DashGL/dashgl.github.io/assets/25621780/140fb753-cce5-45b2-bc99-cda041e0ada3
 author: Kion
 ---
 
 
-Hey guys kion here and I haven't posted anything since updating the site with AstroJS. After updating I wanted to improve on blog content, but I didn't have any practices in place that would insure that. What I've started to do is create tasks in ClickUp. That allows me to draft an article there, and then I can copy and place that directly into GitHub. Another reason in general for delays is that I've been
-living in Japan for the last 15 years and want to move back to the states for a better work-life balance. The problem is that my wife's green card application has been in the works for the last two years. And on top of adding stress, it takes a lot of time away from productivity to do paperwork. I'm hoping things end soon, but a lot of that depends on the government's willingness to force people to
-take experimental medical treatments against their will. 
+Hey guys kion here and I haven't posted anything since updating the site with AstroJS. After updating I wanted to improve on blog content, but I didn't have any practices in place that would insure that. What I've started to do is create tasks in ClickUp. That allows me to draft an article there, and then I can copy and place that directly into GitHub. Another reason in general for delays is that I've been living in Japan for the last 15 years and want to move back to the states for a better work-life balance. The problem is that my wife's green card application has been in the works for the last two years. And on top of adding stress, it takes a lot of time away from productivity to do paperwork. I'm hoping things end soon, but a lot of that depends on the government's willingness to force people to take experimental medical treatments against their will. 
 
 ## DashGL Site Updates
 
@@ -33,12 +31,18 @@ The second reason that I want to keep it around is because there's a huge gap be
 
 ## Commissions
 
-I want to highlight some awesome resources. First we have the Chibi-Linux mascot pack. This is from Vic. These characters look super cute. And they are completely free and open to use.
+![vitascky](https://github.com/DashGL/dashgl.github.io/assets/25621780/cacb61bf-186e-428d-8f1e-987e251fc6c7)
 
-And second is this amazing scene from GeckoBoyAdvance. He has some amazingly detailed images in his portfolio. I love all of the tiny little details that come out in this image.
-And last is this spicy picture of Dashie by DBP. This is going to be an easter egg for the 404 page. Hey, I need to have fun somehow.
+I want to highlight some awesome resources. First we have the Chibi-Linux mascot pack. This is from Vic. These characters look super cute. And they are completely free and open to use. These are by [vitascky](https://sketchfab.com/vitascky). I'll need to update the resource page with downloads for these. 
+
+![Dashie and friends](https://github.com/DashGL/dashgl.github.io/assets/25621780/7856e0b0-ac4e-437a-a043-de3c5cf12003)
+
+And second is this amazing scene from [GeckoBoyAdvance](https://twitter.com/geckoboyadvance). He has some amazingly detailed images in his portfolio. I love all of the tiny little details that come out in this image.
+
+And last is this spicy picture of Dashie (not shown) by [DBP](https://twitter.com/demonbloodpal). This is going to be an easter egg for the 404 page. Hey, I need to have fun somehow. I need to create the default 404 page. But once I do, i might be easy to accidentally on purpose load a missing page. 
 
 ## Megaman Legends
 
 I'm inching my way through Megaman Legends 2. I'll get a small window to make progress on this before real life comes up and hits me with a baseball bat. I traced through the offset to get the Megaman character. The next step will be will be to look into the animations for Megaman, and while I'm doing that I'll also be looking at the high poly characters that are included in the game files.
-As a side note, I'm tempted to come back and update mml.dashgl.com. Now that I have a blog, I'll probably want to move this content over there. And when I do that I'll do a domain redirect so that it points to the blog and filters on the tag. 
+
+As a side note, I'm tempted to come back and update `mml.dashgl.com`. Now that I have a blog, I'll probably want to move this content over there. And when I do that I'll do a domain redirect so that it points to the blog and filters on the tag. 
