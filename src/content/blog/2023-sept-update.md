@@ -2,7 +2,7 @@
 title: Updates for September 2023
 description: Status Report on Trying not to be a low-life loser
 pubDate: Sept. 10, 2023
-heroImage: https://github.com/DashGL/dashgl.github.io/assets/25621780/140fb753-cce5-45b2-bc99-cda041e0ada3
+heroImage: /img/sept-2023-blob.png
 author: Kion
 ---
 
