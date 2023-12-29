@@ -46,8 +46,10 @@ We welcome contributions from everyone! Check out our [Contribution Guidelines](
 
 Mascot character designed by Tyson Tan. Tyson Tan offers mascot design service for free and open source software, free of charge, under free license.
 
-Homepage: tysontan.com
-Email: tysontan@mail.com
+Homepage: [tysontan.com](https://tysontan.com/)  
+- Email: tysontanx@gmail.com (International)
+- Email: tds00@qq.com (China)
+- Twitter: @tysontanx (Direct Message is Open)
 
 ## Get in Touch
 
