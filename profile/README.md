@@ -5,6 +5,8 @@
 [![GitHub issues](https://img.shields.io/github/issues/DashGL/DashGL?style=flat-square)](https://github.com/DashGL/DashGL/issues)
 [![GitHub license](https://img.shields.io/github/license/DashGL/DashGL?style=flat-square)](https://github.com/DashGL/DashGL/blob/main/LICENSE)
 
+![PNG-01](https://github.com/DashGL/.github/assets/25621780/d6faaa35-9e69-4cfd-bc48-9e05155cb59e)
+
 ## About Us
 
 Welcome to DashGL, a community-driven organization passionate about pushing the boundaries of graphics and visualization. We believe in the power of open source collaboration and aim to create cutting-edge solutions for the world of computer graphics.
