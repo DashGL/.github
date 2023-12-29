@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "../components/Container.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Article from "../components/Article.astro";
+import TagList from "../components/elements/TagList.astro";
+import SocialShare from "../components/tutorials/SocialShare.astro";
+import FormattedDate from "../components/elements/FormattedDate.astro";
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<Container
+	title="Information"
+	description="Other Information included in the footer"
+	image="/banner/mcweebies.png"
+>
+
+	<article class="w-100 max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+		<header class="py-12">
+			<div class="px-4 mx-auto w-full max-w-screen-xl text-center">
+				<h1
+					class="mx-auto mb-4 max-w-2xl text-2xl dark:text-white font-extrabold leading-none text-gray-900 sm:text-3xl lg:text-4xl"
+				>
+					{title}
+				</h1>
+				<p class="text-lg font-normal text-gray-500 dark:text-gray-400">
+					{description}
+				</p>
+			</div>
+		</header>
+		<div
+			class="flex flex-col lg:flex-row justify-between lg:items-center py-6 border-t border-b border-gray-200 dark:border-gray-700"
+		>
+			<span
+				class="text-base mb-4 lg:mb-0 font-normal text-gray-500 dark:text-gray-400"
+				>By <a
+					href="#"
+					rel="author"
+					class="font-bold text-gray-900 dark:text-white no-underline hover:underline"
+					>Kion</a
+				>
+			</span>
+			<span class="block text-gray-900 dark:text-white">
+				Published <FormattedDate date={pubDate} />
+			</span>
+		</div>
+		{
+			heroImage && (
+				<img
+					src={heroImage}
+					alt=""
+					style="width: 100%; border-radius: 5px; border: 1px solid #9a9a9a;"
+				/>
+			)
+		}
+
+		<slot class="format" />
+		<SocialShare />
+	</article>
+</Container>
