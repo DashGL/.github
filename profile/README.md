@@ -53,7 +53,7 @@ Mascot character designed by Tyson Tan. Tyson Tan offers mascot design service f
 
 ## Get in Touch
 
-- Follow [Kion on X/Twitter]([https://twitter.com/DashGLOrg](https://twitter.com/kion_dgl) for the latest updates.
+- Follow [Kion on X/Twitter](https://twitter.com/kion_dgl) for the latest updates.
 
 Thank you for being a part of DashGL! Together, let's redefine the world of graphics programming.
 
