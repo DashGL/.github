@@ -46,14 +46,14 @@ We welcome contributions from everyone! Check out our [Contribution Guidelines](
 
 Mascot character designed by Tyson Tan. Tyson Tan offers mascot design service for free and open source software, free of charge, under free license.
 
-Homepage: [tysontan.com](https://tysontan.com/)  
+- Homepage: [tysontan.com](https://tysontan.com/)  
 - Email: tysontanx@gmail.com (International)
 - Email: tds00@qq.com (China)
-- Twitter: @tysontanx (Direct Message is Open)
+- X/Twitter: [@tysontanx](https://twitter.com/tysontanx) (Direct Message is Open)
 
 ## Get in Touch
 
-- Follow us on [X/Twitter]([https://twitter.com/DashGLOrg](https://twitter.com/kion_dgl)) for the latest updates.
+- Follow [Kion on X/Twitter]([https://twitter.com/DashGLOrg](https://twitter.com/kion_dgl) for the latest updates.
 
 Thank you for being a part of DashGL! Together, let's redefine the world of graphics programming.
 
