@@ -35,6 +35,20 @@ Description of Project 3 goes here.
 
 We welcome contributions from everyone! Check out our [Contribution Guidelines](CONTRIBUTING.md) to get started with contributing to DashGL projects. Whether you are a seasoned developer or just getting started, there are plenty of opportunities to make a meaningful impact.
 
+- Submitting tutorials
+- Opening Issues
+- Submitting Open Source Art
+- Sharing Content and Articles
+
+## Mascot 
+
+![others_20171117_dashgl_dash_transparent](https://github.com/DashGL/.github/assets/25621780/c8710ac2-2c6c-4696-8500-a794beae3a1e)
+
+Mascot character designed by Tyson Tan. Tyson Tan offers mascot design service for free and open source software, free of charge, under free license.
+
+Homepage: tysontan.com
+Email: tysontan@mail.com
+
 ## Get in Touch
 
 - Follow us on [X/Twitter]([https://twitter.com/DashGLOrg](https://twitter.com/kion_dgl)) for the latest updates.
